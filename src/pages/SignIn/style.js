@@ -10,7 +10,8 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   gap: 1.9rem;
-  align-self: center;
+  justify-content: center;
+  align-items: center;
   h1 {
     font-size: 4.2rem;
     font-weight: 700;

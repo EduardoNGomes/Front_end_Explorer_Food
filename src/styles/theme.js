@@ -1,8 +1,7 @@
 export default {
   COLORS: {
     BACKGROUND_MAIN: '#000A0F',
-    BACKGROUND_HEADER: '#001119',
-    BACKGROUND_FOOTER: '#00111A',
+    BACKGROUND_HEADER: '#00111A',
 
     RED: '#92000E',
 
