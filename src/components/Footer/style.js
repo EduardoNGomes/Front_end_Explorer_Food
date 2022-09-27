@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
   padding: 1rem 10rem;
+  grid-area: footer;
 `
 
 export const Content = styled.div`
