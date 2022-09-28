@@ -17,7 +17,7 @@ export const Container = styled.div`
     position: relative;
 
     .cards {
-      overflow-x: auto;
+      overflow-x: hidden;
       display: flex;
       gap: 30px;
       scroll-behavior: smooth;

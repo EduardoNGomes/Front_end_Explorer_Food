@@ -1,23 +1,22 @@
 import { Card } from "../Cards";
 import { Container } from "./style";
 
+import { useRef } from "react";
+
 
 import { MdOutlineArrowBackIos , MdOutlineArrowForwardIos } from 'react-icons/md'
 
 
 export const Section = ({title, children}) => {
 
-  const carousel = document.querySelector('.cards')
-  const card = document.querySelector('.card')
-  
-  
+  const carousel = useRef(null)  
+
   const scrollToRight = () =>{
-      carousel.scrollLeft += 2*card.clientWidth
-      console.log(carousel.scrollLeft)
+      carousel.current.scrollLeft += 400
   }
 
   const scrollToLeft = () =>{
-    carousel.scrollLeft -= 2*card.clientWidth
+    carousel.current.scrollLeft -= 400
   }
 
 
@@ -33,7 +32,7 @@ export const Section = ({title, children}) => {
           <MdOutlineArrowForwardIos size={50}/>
         </button>
 
-      <div className="cards">
+      <div className="cards" ref={carousel}>
         {children}
       </div>
 

@@ -15,80 +15,191 @@ export const Home = () => {
 
         <Content>
         
-        <div className="banner">
-          <img src={imgBanner} alt="image fruits and cookie" />
-          <div className="text-banner">
-            <h2>Sabores inigualáveis</h2>
-            <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+          <div className="banner">
+            <img src={imgBanner} alt="image fruits and cookie" />
+            <div className="text-banner">
+              <h2>Sabores inigualáveis</h2>
+              <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+            </div>
           </div>
-        </div>
 
-        <Section title='Pratos principais'>
-        <Card
-          className='card'
-          title='Salada Ravanello'
-          img={imgPlate}
-          description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
-          price='49,97'
-        />
+          <Section title='Pratos principais'>
+            <Card
+              className='card'
+              title='Salada Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+            />
 
-        <Card
-          className='card'
-          title='Salada Ravanello'
-          img={imgPlate}
-          description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
-          price='49,97'
-        />
+            <Card
+              className='card'
+              title='Salada Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+            />
 
-        <Card
-          className='card'
-          title='Salada Ravanello'
-          img={imgPlate}
-          description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
-          price='49,97'
-        />
+            <Card
+              className='card'
+              title='Salada Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+            />
 
-        <Card
-          className='card'
-          title='Salada Ravanello'
-          img={imgPlate}
-          description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
-          price='49,97'
-        />
+            <Card
+              className='card'
+              title='Salada Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+            />
 
-        <Card
-          className='card'
-          title='Salada Ravanello'
-          img={imgPlate}
-          description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
-          price='49,97'
-        />
+            <Card
+              className='card'
+              title='Salada Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+            />
 
-        <Card
-          className='card'
-          title='Salada Ravanello'
-          img={imgPlate}
-          description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
-          price='49,97'
-        />
+            <Card
+              className='card'
+              title='Salada Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+            />
 
-        <Card
-          className='card'
-            title=' Ravanello'
+            <Card
+              className='card'
+                title=' Ravanello'
+                img={imgPlate}
+                description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+                price='49,97'
+            />
+          </Section>
+
+          <Section title='Sobremesas'>
+                    <Card
+            className='card'
+            title='Salada Ravanello'
             img={imgPlate}
             description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
             price='49,97'
-        />
-        </Section>
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+              title=' Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+          />
 
 
-        {/* <Section
-          title='Sobremesas'
-        />
-        
-        <Section
-          title='Bebidas'
-        /> */}
+          </Section>
+          
+          <Section title='Bebidas'>
+                    <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+            title='Salada Ravanello'
+            img={imgPlate}
+            description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+            price='49,97'
+          />
+
+          <Card
+            className='card'
+              title=' Ravanello'
+              img={imgPlate}
+              description='Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+              price='49,97'
+          />
+
+
+          </Section>
           
         </Content>
 
