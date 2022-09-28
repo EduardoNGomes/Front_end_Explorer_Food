@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const Container = styled.button`
   width: 100%;
   background: ${({ theme }) => theme.COLORS.RED};
+  display: flex;
+  gap: 10px;
+
+  align-items: center;
 
   font-size: 1.6rem;
   font-weight: 500;

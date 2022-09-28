@@ -3,9 +3,12 @@ import styled from 'styled-components'
 export const Container = styled.button`
   margin-top: 1.6rem;
   background: transparent;
-  display: inline-block;
   border: none;
 
+  display: flex;
+  gap: 5px;
+
+  align-items: center;
   text-align: center;
   font-family: ${({ theme }) => theme.COLORS.FONT_TEXT};
   font-weight: 500;

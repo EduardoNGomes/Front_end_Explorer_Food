@@ -5,7 +5,7 @@ export default {
 
     RED: '#92000E',
 
-    COLOR_TEXT_WHITE: '#FFFFFF',
+    COLOR_TEXT_WHITE: '#E1E1E6',
     COLOR_SUB_TEXT_GRAY: 'rgba(255, 255, 255, 0.3)',
     COLOR_TEXT_BLUE: '#82F3FF',
     COLOR_TEXT_GRAY: '#C4C4CC',
