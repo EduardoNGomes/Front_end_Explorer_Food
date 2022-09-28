@@ -24,7 +24,8 @@ export const Content = styled.div`
   }
 
   .info-plate {
-    margin-top: 50px;
+    margin: 50px auto 0;
+    max-width: 1020px;
     width: 100%;
 
     display: flex;
