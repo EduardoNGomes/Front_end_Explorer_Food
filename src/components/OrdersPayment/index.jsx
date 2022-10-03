@@ -26,14 +26,16 @@ export const OrdersPayment = ({status}) => {
           <div className="status-order">
             <AiOutlineClockCircle size={150} color='#c4c4cc'/>
 
-
-            <h3>Aguardando pagamento no caixa</h3>
+            <div>
+              <h3>Aguardando pagamento no caixa </h3>
+              <p>Escolha uma forma de pagamento</p>
+            </div>
           </div>
         )
       case 'pix':
         return <Qrcode/>
       case 'credit':
-        return <Credit/>
+        return <Credit paymentMethod={() => setPaymentMethod('aproved')} />
       case 'aproved':
         return(
           <div className="status-order">

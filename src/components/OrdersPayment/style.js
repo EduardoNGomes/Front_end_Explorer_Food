@@ -40,7 +40,7 @@ export const Container = styled.div`
   }
 `
 export const Image = styled.div`
-  height: 40vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +58,19 @@ export const Image = styled.div`
       font-size: 2.4rem;
 
       color: #c4c4cc;
+    }
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      p {
+        text-align: center;
+        font-weight: 400;
+        line-height: 24px;
+        font-size: 2rem;
+
+        color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
+      }
     }
   }
 `

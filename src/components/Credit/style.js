@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 400px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,10 +18,12 @@ export const Container = styled.div`
     gap: 5px;
   }
   input {
-    padding: 15px;
+    padding: 10px;
     border: 1px solid #ffffff;
     border-radius: 5px;
     background: transparent;
+    color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
+    font-size: 1.6rem;
   }
 
   button {
@@ -31,13 +33,11 @@ export const Container = styled.div`
 
 export const OtherInformation = styled.div`
   display: flex;
+  gap: 20px;
   width: 100%;
-  gap: 10px;
-
   > div {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 100%;
   }
 `

@@ -29,6 +29,12 @@ export const Content = styled.div`
     font-family: ${({ theme }) => theme.COLORS.FONT_TEXT};
   }
 
+  .scroll {
+    overflow-y: auto;
+    height: 60vh;
+    padding-right: 10px;
+  }
+
   table,
   tr,
   td,
@@ -62,12 +68,20 @@ export const Content = styled.div`
   }
 
   td {
+    text-align: center;
     color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
 
     font-size: 2rem;
+    line-height: 22px;
     font-weight: 400;
     line-height: 22px;
-
     padding: 20px 30px;
+  }
+
+  span {
+    font-size: 1.6rem;
+    line-height: 22px;
+    font-weight: 400;
+    line-height: 22px;
   }
 `

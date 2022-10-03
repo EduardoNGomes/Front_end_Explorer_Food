@@ -20,21 +20,42 @@ export const Payment = () => {
       img: imgPlate,
       quantity: '2',
       name: 'Salada Radish',
-      value: 25.07   
+      value: '25.10'   
     },
     {
       id: 2,
       img: imgPlate,
       quantity: '2',
       name: 'Salada Radish',
-      value: 35.07   
+      value: '35.10'   
     },
     {
       id: 3,
       img: imgPlate,
       quantity: '3',
       name: 'Salada Radish',
-      value: 20.07   
+      value: '20.05'   
+    },
+    {
+      id: 4,
+      img: imgPlate,
+      quantity: '2',
+      name: 'Salada Radish',
+      value: '25.05'  
+    },
+    {
+      id: 5,
+      img: imgPlate,
+      quantity: '2',
+      name: 'Salada Radish',
+      value: '25.55'
+    },
+    {
+      id: 6,
+      img: imgPlate,
+      quantity: '2',
+      name: 'Salada Radish',
+      value: '25.50'   
     },
 
   ]
@@ -45,7 +66,8 @@ export const Payment = () => {
 
   function totalValue(){
     for(let i of pedidos){
-      sum += Number(i.quantity) * i.value
+      sum += Number(i.quantity) * Number(i.value)
+      console.log(sum)
     }
     return sum
   }
@@ -59,10 +81,12 @@ export const Payment = () => {
         <div className="orders">
           <h4>Meu pedido</h4>
 
+          <div className="scroll">
+
           {
             pedidos.map(pedido => (
-              <div key={pedido.id}>
-                <img src={pedido.img} alt="" />
+              <div key={pedido.id} className='foods'>
+                <img src={pedido.img} alt="food img" />
                 <div>
                   <div className="infos">
                     <span className="quantity">{pedido.quantity} x</span>
@@ -78,6 +102,9 @@ export const Payment = () => {
             ))
           }
 
+          </div>
+
+
           <h5>Total: R$ {sum} </h5> {/* */}
         </div>
         
@@ -85,7 +112,7 @@ export const Payment = () => {
           <h4>Pagamentos</h4>
 
           <OrdersPayment
-            status='delivered'
+            status='pending'
           />
         </div>
 

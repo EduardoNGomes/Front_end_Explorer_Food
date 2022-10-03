@@ -6,6 +6,124 @@ import { OrderStatus } from "../../components/OrderStatus";
 
 
 export const Orders = () => {
+  //teste front-end
+  const items = [
+    {
+      status: 'pending',
+      id: '001',
+      details: [
+        {
+          id: '1',
+          name:'Salada Radish',
+          quantity: '2'
+        },
+        {
+          id: '2',
+          name:'Torradas de Parma',
+          quantity: '1'
+        },
+        {
+          id: '3',
+          name:'Chá de Canela',
+          quantity: '2'
+        },
+        {
+          id: '4',
+          name:'Suco de Maracujá',
+          quantity: '1'
+        }
+      ],
+      date: '12/04',
+      hour: '11:30'
+    },
+    {
+      status: 'readying',
+      id: '002',
+      details: [
+        {
+          id: '1',
+          name:'Salada Radish',
+          quantity: '2'
+        },
+        {
+          id: '2',
+          name:'Torradas de Parma',
+          quantity: '1'
+        },
+        {
+          id: '3',
+          name:'Chá de Canela',
+          quantity: '2'
+        },
+        {
+          id: '4',
+          name:'Suco de Maracujá',
+          quantity: '1'
+        }
+      ],
+      date: '12/04',
+      hour: '11:30'
+    },
+    {
+      status: 'readying',
+      id: '003',
+      details: [
+        {
+          id: '1',
+          name:'Salada Radish',
+          quantity: '2'
+        },
+        {
+          id: '2',
+          name:'Torradas de Parma',
+          quantity: '1'
+        },
+        {
+          id: '3',
+          name:'Chá de Canela',
+          quantity: '2'
+        },
+        {
+          id: '4',
+          name:'Suco de Maracujá',
+          quantity: '1'
+        }
+      ],
+      date: '12/04',
+      hour: '11:30'
+    },
+    {
+      status: 'delivered',
+      id: '004',
+      details: [
+        {
+          id: '1',
+          name:'Salada Radish',
+          quantity: '2'
+        },
+        {
+          id: '2',
+          name:'Torradas de Parma',
+          quantity: '1'
+        },
+        {
+          id: '3',
+          name:'Chá de Canela',
+          quantity: '2'
+        },
+        {
+          id: '4',
+          name:'Suco de Maracujá',
+          quantity: '1'
+        }
+      ],
+      date: '12/04',
+      hour: '11:30'
+    },
+
+  ]
+
+
   return(
     <Container>
       <Header/>
@@ -13,93 +131,47 @@ export const Orders = () => {
       <Content>
         <h2>Pedidos</h2>
 
-        <table>
-          <thead>
-              <tr>
-                <th>Status</th>
-                <th>Código</th>
-                <th>Detalhamento</th>
-                <th>Data e hora</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                <td>
-                  <OrderStatus title='Pendente'/>
-                </td>
-                <td>
-                  <p>000004</p>
-                </td>
-                <td>
-                  <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
-                </td>
-                <td>
-                  <p>20/05 às 18h00</p>
-                </td>
-              </tr>
+        <div className="scroll">
 
-              <tr>
-                <td>
-                  <OrderStatus title='Preparando'/>
-                </td>
-                <td>
-                  <p>000004</p>
-                </td>
-                <td>
-                  <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
-                </td>
-                <td>
-                  <p>20/05 às 18h00</p>
-                </td>
-              </tr>
+          <table>
+            <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Código</th>
+                  <th>Detalhamento</th>
+                  <th>Data e hora</th>
+                </tr>
+            </thead>
+            <tbody>
 
-              <tr>
-                <td>
-                  <OrderStatus title='Preparando'/>
-                </td>
-                <td>
-                  <p>000004</p>
-                </td>
-                <td>
-                  <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
-                </td>
-                <td>
-                  <p>20/05 às 18h00</p>
-                </td>
-              </tr>
+                {
+                  items.map(item => (
+                    <tr key={item.id}>
+                      <td>
+                        <OrderStatus status={item.status}/>
+                      </td>
+                      <td>
+                        <p>{item.id}</p>
+                      </td>
+                      <td>
+                        <p>
+                          {item.details.map((detail,index) => (
+                            <span key={detail.id}>{detail.quantity} x {item.details.length - 1 === index ? detail.name  : detail.name + ', ' } </span>
+                          ))}
+                        </p>
+                      </td>
+                      <td>
+                        <p>{item.date} às {item.hour}</p>
+                      </td>
+                    </tr>
 
-              <tr>
-                <td>
-                  <OrderStatus title='Entregue'/>
-                </td>
-                <td>
-                  <p>000004</p>
-                </td>
-                <td>
-                  <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
-                </td>
-                <td>
-                  <p>20/05 às 18h00</p>
-                </td>
-              </tr>
+                  ))
+                }
 
-              <tr>
-                <td>
-                  <OrderStatus title='Entregue'/>
-                </td>
-                <td>
-                  <p>000004</p>
-                </td>
-                <td>
-                  <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
-                </td>
-                <td>
-                  <p>20/05 às 18h00</p>
-                </td>
-              </tr>
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
         
 
       </Content>

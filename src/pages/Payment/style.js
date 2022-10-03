@@ -20,10 +20,16 @@ export const Content = styled.div`
   width: 100%;
   max-width: 1120px;
 
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'orders payment';
 
   .orders {
+    grid-area: orders;
+
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -36,10 +42,18 @@ export const Content = styled.div`
       color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
     }
 
-    > div {
+    .scroll {
+      overflow-y: auto;
+      width: 80%;
+
+      height: 50vh;
+    }
+
+    .foods {
       display: flex;
       gap: 20px;
       align-items: center;
+      margin-bottom: 10px;
 
       img {
         width: 100px;
@@ -85,6 +99,8 @@ export const Content = styled.div`
   }
 
   .payments {
+    grid-area: payment;
+
     width: 100%;
     max-width: 600px;
 

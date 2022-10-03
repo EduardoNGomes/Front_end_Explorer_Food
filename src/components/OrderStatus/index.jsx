@@ -3,16 +3,27 @@ import { Container } from "./style";
 import { FaCircle } from 'react-icons/fa'
 
 
-export const OrderStatus = ({title}) => {
+export const OrderStatus = ({status}) => {
 
   const whatIsTheColor = () => {
-    switch(title){
-      case 'Pendente':
+    switch(status){
+      case 'pending':
         return 'red'
-      case 'Preparando':
+      case 'readying':
         return 'yellow'
-      case 'Entregue':
+      case 'delivered':
         return 'green'
+    }
+  }
+
+  const whatIsTheTitle = () => {
+    switch(status){
+      case 'pending':
+        return 'Pendente'
+      case 'readying':
+        return 'Preparando'
+      case 'delivered':
+        return 'Entregue'
     }
   }
 
@@ -22,7 +33,7 @@ export const OrderStatus = ({title}) => {
         color={whatIsTheColor()}
         size={10}
       />
-      {title}
+      {whatIsTheTitle()}
     </Container>
   )
 }

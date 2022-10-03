@@ -5,7 +5,7 @@ import { Button } from '../Button'
 import { FaMoneyCheck} from 'react-icons/fa'
 
 
-export const Credit = () => {
+export const Credit = ({paymentMethod}) => {
   return(
     <Container>
 
@@ -29,6 +29,7 @@ export const Credit = () => {
       <Button
         Icon={FaMoneyCheck}
         title='Finalizar pagamento'
+        onClick={paymentMethod}
       />
 
     </Container>
