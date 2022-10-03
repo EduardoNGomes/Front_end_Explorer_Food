@@ -9,8 +9,6 @@ export const Container = styled.div`
     'header'
     'content'
     'footer';
-
-  overflow-y: auto;
 `
 
 export const Content = styled.div`
