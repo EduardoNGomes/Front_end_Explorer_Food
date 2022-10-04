@@ -9,6 +9,8 @@ export default createGlobalStyle`
   font-size: 66.5%;
   font-family: ${({ theme }) => theme.COLORS.FONT_TITLE};
 
+  outline: none;
+
   ::-webkit-scrollbar {
       width: 8px;
  
