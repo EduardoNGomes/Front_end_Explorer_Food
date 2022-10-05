@@ -11,6 +11,9 @@ export const Container = styled.div`
     'content'
     'footer';
 
+  @media (max-width: 1024px) {
+    grid-template-rows: 200px auto 70px;
+  }
   @media (max-width: 400px) {
     grid-template-rows: auto auto 70px;
   }
@@ -148,6 +151,39 @@ export const Content = styled.div`
     font-weight: 500;
     font-size: 1.4rem;
     color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
+  }
+
+  @media (max-width: 1024px) {
+    height: 60vh;
+    padding: 10px;
+    overflow-y: auto;
+    form {
+      height: auto;
+      overflow-y: hidden;
+    }
+    .wrapper {
+    }
+    .files {
+      width: 100%;
+
+      label {
+        width: 100%;
+      }
+    }
+
+    .tags {
+      justify-content: center;
+      gap: 20px;
+      div {
+        width: 40%;
+      }
+    }
+    .price {
+      width: 100%;
+    }
+    .add {
+      width: 100%;
+    }
   }
 
   @media (max-width: 400px) {
