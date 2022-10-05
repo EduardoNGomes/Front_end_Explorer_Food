@@ -2,31 +2,34 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
+  height: 80px;
   background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
-  padding: 1rem 10rem;
+  padding: 1rem 15rem;
   grid-area: header;
 
-  margin: 0 auto;
-  display: flex;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 1fr 3fr 1fr 1fr;
+  grid-template-areas: 'logo favorites search request exit';
   gap: 3.2rem;
 
   .logo {
-    display: flex;
-    align-items: center;
+    margin: 0;
+    grid-area: logo;
+
     gap: 1rem;
 
-    width: 30%;
-    h2 {
-      font-weight: 700;
-      font-size: 2.5rem;
-      text-align: center;
-      color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
-      line-height: 30px;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
+    line-height: 30px;
+
+    svg {
+      color: #065e7c;
     }
   }
   .favorites {
     margin: 0;
-    width: 20%;
     display: flex;
     align-items: center;
     font-weight: 400;
@@ -36,8 +39,9 @@ export const Container = styled.div`
   }
 
   .search {
+    grid-area: search;
+
     display: flex;
-    width: 100%;
     align-items: center;
 
     background-color: #0d1d25;
@@ -59,7 +63,8 @@ export const Container = styled.div`
     }
   }
   .request {
-    width: 30%;
+    grid-area: request;
+
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -67,35 +72,36 @@ export const Container = styled.div`
   }
 
   .exit {
+    grid-area: exit;
+
     align-items: center;
     background: transparent;
     border: none;
   }
+  @media (max-width: 1280px) {
+    padding: 1rem 10rem;
+  }
 
-  @media (max-width: 360px) {
-    padding: 10px;
+  @media (max-width: 1024px) {
     display: grid;
-    gap: 15px;
+    width: 100%;
+    gap: 5px;
+
+    padding: 10px;
     height: 200px;
 
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 50px 50px;
+    align-items: center;
+
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     grid-template-areas:
-      'favorites request exit'
-      'logo logo logo'
-      'search search search';
+      'logo favorites request exit'
+      'search search search search';
+
     .logo {
-      grid-area: logo;
       width: 100%;
       justify-content: center;
       align-items: center;
     }
-
-    .search {
-      width: 100%;
-      grid-area: search;
-    }
-
     .favorites {
       width: 100%;
       font-size: 1.4rem;
@@ -105,15 +111,23 @@ export const Container = styled.div`
     .request {
       width: 100%;
       font-size: 1.4rem;
-
-      grid-area: request;
     }
 
     .exit {
       width: 100%;
       width: 20px;
       margin: 0 auto;
-      grid-area: exit;
     }
+  }
+  @media (max-width: 400px) {
+    padding: 10px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px;
+    grid-template-areas:
+      'favorites request exit'
+      'logo logo logo'
+      'search search search';
   }
 `

@@ -11,13 +11,17 @@ import { BsHexagonFill } from 'react-icons/bs'
 export const Header = () => {
   return(
     <Container>
+      
+      
 
       <div className="logo">
-        <BsHexagonFill
-          size={40}
-          color='#065E7C'
-          />
-        <h2>food explorer</h2>
+
+        <ButtonTransparrent
+          Icon={BsHexagonFill}
+          iconSize={30}
+          title='Food Explorer' 
+          className='logo'
+        />
 
       </div>
 

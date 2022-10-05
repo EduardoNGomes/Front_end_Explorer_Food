@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.button`
   width: 100%;
+  max-height: 50px;
   background: ${({ theme }) => theme.COLORS.RED};
   display: flex;
   gap: 10px;
