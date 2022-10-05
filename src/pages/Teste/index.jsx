@@ -18,6 +18,7 @@ export const Test = () => {
 
       </Content>
 
+      <Footer/>
     </Container>
   )
 }

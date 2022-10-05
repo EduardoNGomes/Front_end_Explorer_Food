@@ -4,6 +4,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
+  grid-template-rows: auto auto 70px;
+
   grid-template-areas:
     'header'
     'content'
@@ -16,6 +18,8 @@ export const Content = styled.div`
   margin: 50px auto;
   width: 100%;
   max-width: 1120px;
+  padding-right: 10px;
+  overflow: auto;
 
   h2 {
     font-family: ${({ theme }) => theme.COLORS.FONT_TEXT};

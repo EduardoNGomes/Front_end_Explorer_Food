@@ -2,12 +2,15 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
+  height: 70px;
   background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
-  padding: 1rem 10rem;
+  padding: 10px;
   grid-area: footer;
 `
 
 export const Content = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,5 +33,9 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
     font-size: 1.4rem;
     line-height: 14px;
+  }
+
+  @media (max-width: 400px) {
+    flex-direction: column;
   }
 `
