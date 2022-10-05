@@ -4,22 +4,25 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: auto auto 70px;
+  grid-template-rows: 100px auto 70px;
 
   grid-template-areas:
     'header'
     'content'
     'footer';
+
+  @media (max-width: 400px) {
+    grid-template-rows: auto auto 70px;
+  }
 `
 
 export const Content = styled.div`
   grid-area: content;
 
-  margin: 50px auto;
+  margin: 0 auto;
   width: 100%;
-  max-width: 1120px;
-  padding-right: 10px;
-  overflow: auto;
+  max-width: 1280px;
+  padding: 10px;
 
   h2 {
     font-family: ${({ theme }) => theme.COLORS.FONT_TEXT};
@@ -31,6 +34,10 @@ export const Content = styled.div`
   }
 
   form {
+    height: 50vh;
+    padding: 10px;
+    overflow-y: auto;
+
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -98,6 +105,7 @@ export const Content = styled.div`
 
   .tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     background: transparent;
     padding: 5px;
@@ -140,5 +148,39 @@ export const Content = styled.div`
     font-weight: 500;
     font-size: 1.4rem;
     color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
+  }
+
+  @media (max-width: 400px) {
+    height: 60vh;
+    padding: 10px;
+    overflow-y: auto;
+    form {
+      height: auto;
+      overflow-y: hidden;
+    }
+    .wrapper {
+      flex-direction: column;
+    }
+    .files {
+      width: 100%;
+
+      label {
+        width: 100%;
+      }
+    }
+
+    .tags {
+      justify-content: center;
+      gap: 20px;
+      div {
+        width: 40%;
+      }
+    }
+    .price {
+      width: 100%;
+    }
+    .add {
+      width: 100%;
+    }
   }
 `

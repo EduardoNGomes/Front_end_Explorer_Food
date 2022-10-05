@@ -53,6 +53,7 @@ export const New = () => {
                   <Tag
                     value='Teste'
                     />  
+                    
                   <Tag
                     isNew
                   />  
