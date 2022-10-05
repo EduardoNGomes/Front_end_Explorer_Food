@@ -5,20 +5,17 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
   padding: 1rem 10rem;
   grid-area: header;
-`
 
-export const Content = styled.div`
   margin: 0 auto;
   display: flex;
-  max-width: 1280px;
   gap: 3.2rem;
 
-  > .logo {
+  .logo {
     display: flex;
     align-items: center;
     gap: 1rem;
 
-    width: 50%;
+    width: 30%;
     h2 {
       font-weight: 700;
       font-size: 2.5rem;
@@ -29,7 +26,7 @@ export const Content = styled.div`
   }
   .favorites {
     margin: 0;
-    width: 30%;
+    width: 20%;
     display: flex;
     align-items: center;
     font-weight: 400;
@@ -73,5 +70,50 @@ export const Content = styled.div`
     align-items: center;
     background: transparent;
     border: none;
+  }
+
+  @media (max-width: 360px) {
+    padding: 10px;
+    display: grid;
+    gap: 15px;
+    height: 200px;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px;
+    grid-template-areas:
+      'favorites request exit'
+      'logo logo logo'
+      'search search search';
+    .logo {
+      grid-area: logo;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search {
+      width: 100%;
+      grid-area: search;
+    }
+
+    .favorites {
+      width: 100%;
+      font-size: 1.4rem;
+      grid-area: favorites;
+    }
+
+    .request {
+      width: 100%;
+      font-size: 1.4rem;
+
+      grid-area: request;
+    }
+
+    .exit {
+      width: 100%;
+      width: 20px;
+      margin: 0 auto;
+      grid-area: exit;
+    }
   }
 `

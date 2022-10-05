@@ -1,18 +1,16 @@
-import { Container, Content } from "./style";
+import { Container } from "./style";
 
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
 
-import {AiOutlineSearch} from 'react-icons/ai'
-import { FaMoneyCheck} from 'react-icons/fa'
+import { AiOutlineSearch , AiOutlineHeart } from 'react-icons/ai'
+import { FaMoneyCheck } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
-import {BsHexagonFill} from 'react-icons/bs'
+import { BsHexagonFill } from 'react-icons/bs'
 
 export const Header = () => {
   return(
     <Container>
-      <Content>
-
 
       <div className="logo">
         <BsHexagonFill
@@ -26,7 +24,10 @@ export const Header = () => {
 
       <ButtonTransparrent
         className='favorites'
-        title='Meus favoritos'
+        title='Favoritos'
+        
+        Icon={AiOutlineHeart}
+        iconSize={20}
         />
 
       <div className="search">
@@ -38,7 +39,7 @@ export const Header = () => {
       </div>
 
       <Button
-        title='Meu pedido'
+        title='Pedidos'
         Icon={FaMoneyCheck}
         className='request'
         />
@@ -50,7 +51,6 @@ export const Header = () => {
           />
       </button>
 
-          </Content>
     </Container>
   )
 }
