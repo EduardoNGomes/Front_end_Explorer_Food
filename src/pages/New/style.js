@@ -161,8 +161,7 @@ export const Content = styled.div`
       height: auto;
       overflow-y: hidden;
     }
-    .wrapper {
-    }
+
     .files {
       width: 100%;
 
@@ -187,36 +186,8 @@ export const Content = styled.div`
   }
 
   @media (max-width: 400px) {
-    height: 60vh;
-    padding: 10px;
-    overflow-y: auto;
-    form {
-      height: auto;
-      overflow-y: hidden;
-    }
     .wrapper {
       flex-direction: column;
-    }
-    .files {
-      width: 100%;
-
-      label {
-        width: 100%;
-      }
-    }
-
-    .tags {
-      justify-content: center;
-      gap: 20px;
-      div {
-        width: 40%;
-      }
-    }
-    .price {
-      width: 100%;
-    }
-    .add {
-      width: 100%;
     }
   }
 `

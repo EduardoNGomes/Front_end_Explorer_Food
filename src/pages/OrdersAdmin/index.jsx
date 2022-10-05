@@ -132,8 +132,6 @@ export const OrdersAdmin = () => {
       <Content>
         <h2>Pedidos</h2>
 
-        <div className="scroll">
-
           <table>
             <thead>
                 <tr>
@@ -177,7 +175,7 @@ export const OrdersAdmin = () => {
 
             </tbody>
           </table>
-        </div>
+
         
 
       </Content>
