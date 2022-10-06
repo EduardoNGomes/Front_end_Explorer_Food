@@ -6,7 +6,6 @@ export const Container = styled.div`
 
   .pay {
     display: flex;
-
     > button {
       margin: 0;
       width: 100%;
@@ -40,6 +39,7 @@ export const Container = styled.div`
   }
 `
 export const Image = styled.div`
+  width: 100%;
   height: 50vh;
   display: flex;
   justify-content: center;
@@ -62,6 +62,8 @@ export const Image = styled.div`
     > div {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 15px;
       p {
         text-align: center;
@@ -70,6 +72,19 @@ export const Image = styled.div`
         font-size: 2rem;
 
         color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    .status-order {
+      h3 {
+        font-size: 2rem;
+      }
+      > div {
+        p {
+          font-size: 1.6rem;
+        }
       }
     }
   }

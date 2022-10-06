@@ -67,7 +67,6 @@ export const Payment = () => {
   function totalValue(){
     for(let i of pedidos){
       sum += Number(i.quantity) * Number(i.value)
-      console.log(sum)
     }
     return sum
   }

@@ -4,21 +4,32 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 70px auto 50px;
+  grid-template-rows: 100px auto 70px;
+
   grid-template-areas:
     'header'
     'content'
     'footer';
 
-  overflow-y: auto;
+  @media (max-width: 1024px) {
+    grid-template-rows: 200px auto 70px;
+  }
+  @media (max-width: 400px) {
+    grid-template-rows: auto auto 70px;
+  }
 `
 
 export const Content = styled.div`
   grid-area: content;
 
-  margin: 50px auto;
+  padding: 0 10px;
+  margin: 0 auto;
+
   width: 100%;
-  max-width: 1120px;
+  max-width: 1280px;
+  height: 70vh;
+
+  overflow-y: auto;
 
   /* display: flex;
   justify-content: space-between; */
@@ -114,6 +125,58 @@ export const Content = styled.div`
       line-height: 45px;
       font-family: ${({ theme }) => theme.COLORS.FONT_TEXT};
       color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
+    }
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'orders'
+      'payment';
+
+    .orders {
+      .scroll {
+        width: 100%;
+      }
+    }
+    .orders,
+    .payments {
+      align-items: center;
+      margin: 0 auto;
+    }
+    .orders .scroll {
+      width: 100%;
+      padding: 20px;
+    }
+    .payments {
+      margin-bottom: 50px;
+    }
+    .payments div {
+      width: 100%;
+    }
+  }
+  @media (max-width: 400px) {
+    .orders {
+      .scroll {
+        overflow-y: auto;
+
+        height: 60vh;
+      }
+      .foods {
+        img {
+          width: 70px;
+        }
+        .infos {
+          .quantity,
+          .name {
+            font-size: 1.6rem;
+          }
+
+          .value {
+            font-size: 1.2rem;
+          }
+        }
+      }
     }
   }
 `

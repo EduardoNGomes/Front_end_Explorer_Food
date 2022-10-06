@@ -19,8 +19,8 @@ export const OrdersPayment = ({status}) => {
   const [ paymentMethod, setPaymentMethod ] = useState(status)
 
 
-  const haddlePayment = (statusreceive) => {
-    switch(statusreceive){
+  const haddlePayment = (statusReceive) => {
+    switch(statusReceive){
       case 'pending':
         return (
           <div className="status-order">

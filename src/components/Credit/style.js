@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 450px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,6 +29,10 @@ export const Container = styled.div`
   button {
     justify-content: center;
   }
+
+  @media (max-width: 400px) {
+    padding: 10px;
+  }
 `
 
 export const OtherInformation = styled.div`
@@ -39,5 +43,9 @@ export const OtherInformation = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+  }
+
+  @media (max-width: 400px) {
+    flex-direction: column;
   }
 `
