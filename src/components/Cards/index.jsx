@@ -1,17 +1,43 @@
 import { Container } from "./style";
+import { useEffect } from "react";
+import { useState, } from "react";
+
+
 
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
 
-import { BiHeart } from 'react-icons/bi'
 
-export const Card = ({title, img, description, price, ...rest}) => {
+import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
+
+export const Card = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, ...rest}) => {
+  const [favorite, setFavorite] = useState(false)
+
+  // const [favoritePlates, setFavoritesPlates] = useState([])
+
+  // useEffect(()=>{
+  //   setFavoritesPlates(prevState =>  prevState + id )
+  //   console.log(favoritePlates)
+  // },[favorite])
+
+  const handdleFavorites = () =>{
+  // () => setFavorite(!favorite)
+
+    console.log(favoritePlates)
+    setFavoritesPlates(prevState => prevState + id)
+  }
+  //   useEffect(()=>{
+  //   setFavoritesPlates()
+  // },)
   return(
     <Container {...rest}>
 
-      <BiHeart
-        size={30}
+      <ButtonTransparrent
+        Icon={favorite ? AiFillHeart :  AiOutlineHeart}
         className='icon'
+        iconSize={30}
+        iconColor={favorite ? 'red' : ''}
+        onClick={handdleFavorites}
       />
 
       <img src={img} alt="" />
@@ -20,7 +46,7 @@ export const Card = ({title, img, description, price, ...rest}) => {
         className='name'
         title={title}
       />
-      <p>{description}</p>
+      <p>{ingredients}</p>
 
       <h4>R$ {price}</h4>
 

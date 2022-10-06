@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  gap: 30rem;
+  gap: 20rem;
   justify-content: center;
 
   @media (max-width: 1000px) {

@@ -1,9 +1,12 @@
 import { Container } from "./style";
 
-export const ButtonTransparrent = ({title,Icon = false, iconSize = false,  ...rest}) =>{
+
+export const ButtonTransparrent = ({title='', onClick,Icon = false, iconSize = false,iconColor='',  ...rest}) =>{
+
+
   return(
-    <Container {...rest}>
-      {Icon && <Icon size={iconSize}/>}
+    <Container  onClick={onClick} {...rest}>
+      {Icon && <Icon size={iconSize} color={iconColor}/>}
       {title}
     </Container>
   )
