@@ -6,6 +6,15 @@ export const Container = styled.div`
   display: flex;
   gap: 30rem;
   justify-content: center;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15rem;
+  }
+  @media (max-width: 400px) {
+    gap: 5rem;
+  }
 `
 export const Content = styled.div`
   display: flex;
@@ -16,5 +25,11 @@ export const Content = styled.div`
     font-size: 4.2rem;
     font-weight: 700;
     color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 3.5rem;
+    }
   }
 `
