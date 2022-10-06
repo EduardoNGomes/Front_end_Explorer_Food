@@ -6,7 +6,7 @@ import imgBanner from '../../assets/images/imageHome.png'
 import imgPlate from '../../assets/images/Mask group-11.png'
 
 import { Section } from "../../components/Section";
-import {Card} from '../../components/Cards'
+import { Card } from '../../components/Cards'
 
 export const Home = () => {
   return(
@@ -18,7 +18,7 @@ export const Home = () => {
           <div className="banner">
             <img src={imgBanner} alt="image fruits and cookie" />
             <div className="text-banner">
-              <h2>Sabores inigualáveis</h2>
+              <h2>Sabores Inigualáveis</h2>
               <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
             </div>
           </div>

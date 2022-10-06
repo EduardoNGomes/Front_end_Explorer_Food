@@ -4,21 +4,31 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 70px auto 50px;
+  grid-template-rows: 70px auto 70px;
   grid-template-areas:
     'header'
     'content'
     'footer';
 
-  overflow-y: auto;
+  @media (max-width: 1024px) {
+    grid-template-rows: 200px auto 70px;
+  }
+  @media (max-width: 400px) {
+    grid-template-rows: auto auto 70px;
+  }
 `
 
 export const Content = styled.div`
   grid-area: content;
 
-  margin: 164px auto;
+  padding: 130px 10px 0;
+  margin: 30px auto;
+
   width: 100%;
-  max-width: 1120px;
+  max-width: 1280px;
+  height: 70vh;
+
+  overflow-y: auto;
 
   .banner {
     position: relative;
@@ -56,6 +66,55 @@ export const Content = styled.div`
         font-size: 1.8rem;
         font-weight: 400;
         line-height: 140%;
+        color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    padding: 50px 30px 0;
+
+    .banner {
+      height: 200px;
+      img {
+        width: 400px;
+        left: -40px;
+      }
+
+      .text-banner {
+        width: 50%;
+        h2 {
+          font-size: 2.5rem;
+        }
+        p {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    height: 60vh;
+    padding: 30px 15px 0;
+
+    .banner {
+      height: 130px;
+      img {
+        width: 250px;
+        left: 50px;
+      }
+      .text-banner {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        right: 0;
+        width: 100%;
+        h2 {
+          font-size: 3.5rem;
+        }
+        p {
+          font-size: 1.2rem;
+        }
       }
     }
   }
