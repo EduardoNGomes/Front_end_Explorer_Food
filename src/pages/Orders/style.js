@@ -4,19 +4,32 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 70px auto 50px;
+  grid-template-rows: 100px auto 70px;
+
   grid-template-areas:
     'header'
     'content'
     'footer';
+
+  @media (max-width: 1024px) {
+    grid-template-rows: 200px auto 70px;
+  }
+  @media (max-width: 400px) {
+    grid-template-rows: auto auto 70px;
+  }
 `
 
 export const Content = styled.div`
   grid-area: content;
 
-  margin: 50px auto;
+  padding: 0 10px;
+  margin: 0 auto;
+
   width: 100%;
-  max-width: 1120px;
+  max-width: 1280px;
+  height: 60vh;
+
+  overflow-y: auto;
 
   h2 {
     color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
@@ -47,6 +60,10 @@ export const Content = styled.div`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     width: 100%;
+    min-width: 680px;
+
+    overflow-x: auto;
+    margin-bottom: 10px;
   }
 
   th {
@@ -81,5 +98,12 @@ export const Content = styled.div`
     line-height: 22px;
     font-weight: 400;
     line-height: 22px;
+  }
+  @media (max-width: 1000px) {
+    th,
+    td,
+    select {
+      padding: 10px;
+    }
   }
 `
