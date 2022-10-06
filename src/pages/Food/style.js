@@ -10,14 +10,25 @@ export const Container = styled.div`
     'content'
     'footer';
 
-  overflow-y: auto;
+  @media (max-width: 1024px) {
+    grid-template-rows: 200px auto 70px;
+  }
+  @media (max-width: 400px) {
+    grid-template-rows: auto auto 70px;
+  }
 `
 
 export const Content = styled.div`
   grid-area: content;
-  margin: 30px auto;
+
+  padding: 0 10px;
+  margin: 0 auto;
+
   width: 100%;
-  max-width: 1120px;
+  max-width: 1280px;
+  height: 60vh;
+
+  overflow-y: auto;
 
   > button {
     font-size: 2.4rem;
@@ -102,6 +113,38 @@ export const Content = styled.div`
               border: none;
               color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
             }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    padding: 20px;
+    .info-plate {
+      img {
+        height: 250px;
+      }
+    }
+  }
+  @media (max-width: 400px) {
+    .info-plate {
+      flex-direction: column;
+      img {
+        height: auto;
+      }
+
+      .valueAndQuantity {
+        flex-direction: column;
+      }
+
+      .infos .valueAndQuantity {
+        .quantity {
+          > div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            font-size: 2.6rem;
           }
         }
       }

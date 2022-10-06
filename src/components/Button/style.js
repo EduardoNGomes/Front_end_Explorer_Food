@@ -5,6 +5,7 @@ export const Container = styled.button`
   max-height: 50px;
   background: ${({ theme }) => theme.COLORS.RED};
   display: flex;
+  justify-content: center;
   gap: 10px;
 
   align-items: center;
