@@ -14,7 +14,7 @@ export const Home = () => {
   //without back-end
   const plates = [
     {
-      id:'01',
+      id: '01',
       title: 'Salada Ravanello',
       img: imgPlate,
       ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
@@ -168,13 +168,11 @@ export const Home = () => {
     },
 
   ]
-
-  const [favorite, setFavorite] = useState(false)
+  //
 
   const [favoritePlates, setFavoritesPlates] = useState([])
 
   
- 
 
   return(
 

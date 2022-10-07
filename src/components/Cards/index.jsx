@@ -1,34 +1,37 @@
 import { Container } from "./style";
-import { useEffect } from "react";
+
 import { useState, } from "react";
-
-
 
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
-
 
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
 export const Card = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, ...rest}) => {
   const [favorite, setFavorite] = useState(false)
 
-  // const [favoritePlates, setFavoritesPlates] = useState([])
-
-  // useEffect(()=>{
-  //   setFavoritesPlates(prevState =>  prevState + id )
-  //   console.log(favoritePlates)
-  // },[favorite])
 
   const handdleFavorites = () =>{
-  // () => setFavorite(!favorite)
+    //Change Icon color
+    setFavorite(!favorite)
 
-    console.log(favoritePlates)
-    setFavoritesPlates(prevState => prevState + id)
+    //Verify if favorite plates include in favorites
+    const isFavoritePlate = favoritePlates.includes(id)
+
+    if(isFavoritePlate){
+      //return new list without id existing in old list
+      const FilteredPlates = favoritePlates.filter(ids => ids !== id )
+      
+      //add the new list to favoritePlates
+      setFavoritesPlates(FilteredPlates)
+    }else{
+
+      //add an id to the favoritePlates list, without removing old ids
+      setFavoritesPlates(prevState => [...prevState , id])
+    }
+
   }
-  //   useEffect(()=>{
-  //   setFavoritesPlates()
-  // },)
+
   return(
     <Container {...rest}>
 
@@ -40,7 +43,7 @@ export const Card = ({title, img, id, ingredients, price ,  setFavoritesPlates, 
         onClick={handdleFavorites}
       />
 
-      <img src={img} alt="" />
+      <img src={img} alt="plate img" />
       
       <ButtonTransparrent
         className='name'
