@@ -6,13 +6,12 @@ import imgBanner from '../../assets/images/imageHome.png'
 import imgPlate from '../../assets/images/Mask group-11.png'
 
 import { Section } from "../../components/Section";
-import { Card } from '../../components/Cards'
+import { Cards } from '../../components/Cards'
 import { useState } from "react";
-import { useEffect } from "react";
 
 export const Home = () => {
   //without back-end
-  const plates = [
+  const mainPlates = [
     {
       id: '01',
       title: 'Salada Ravanello',
@@ -64,7 +63,7 @@ export const Home = () => {
     },
 
   ]
-  const plates2 = [
+  const dessertPlate = [
     {
       id:'08',
       title: 'Salada Ravanello',
@@ -116,7 +115,7 @@ export const Home = () => {
     },
 
   ]
-  const plates3 = [
+  const drinks = [
     {
       id:'15',
       title: 'Salada Ravanello',
@@ -170,15 +169,44 @@ export const Home = () => {
   ]
   //
 
-  const [favoritePlates, setFavoritesPlates] = useState([])
+  //Save all plates or favorite plates
+  const [ favoritePlates, setFavoritesPlates ] = useState([])
 
-  
+  //Choose to show favorites or not
+  const [ showFavorites, setShowFavorites ] = useState(false)
+
+  // Save each plate favorite in the section 
+  const [ mainPlatesFavorites, setMainPlatesFavorites] = useState([])
+  const [ dessertPlatesFavorites, setDessertPlatesFavorites] = useState([])
+  const [ drinksFavorites, setDrinksFavorites] = useState([])
+
+
+
+  const handleShowFavorites = () => {
+
+    //Check which plates in favorites 
+    const mainPlatesFiltered = mainPlates.filter(main => favoritePlates.includes(main.id))
+    const dessertPlatesFiltered = dessertPlate.filter(dessert => favoritePlates.includes(dessert.id))
+    const drinksFiltered = drinks.filter(drink => favoritePlates.includes(drink.id))
+
+
+    
+    //Add favorites plates to new array to render
+    setMainPlatesFavorites(mainPlatesFiltered )
+    setDessertPlatesFavorites(dessertPlatesFiltered)
+    setDrinksFavorites(drinksFiltered)
+
+    //Show favorite On/Off
+    setShowFavorites(!showFavorites)
+  }
 
   return(
 
     
     <Container>
-      <Header/>
+      <Header
+        handleShowFavorites={handleShowFavorites}
+      />
 
         <Content>
         
@@ -192,9 +220,11 @@ export const Home = () => {
 
           <Section title='Pratos principais'>
 
-            {
-              plates.map(plate => (
-                <Card
+            { /* Check if render all plates or favorite plates */
+              !showFavorites ? 
+            
+              mainPlates.map(plate => (
+                <Cards
                   key={plate.id}
                   id={plate.id}
                   className='card'
@@ -206,47 +236,108 @@ export const Home = () => {
                   favoritePlates={favoritePlates}
 
                 />
-              ))
-            }
+              )) 
+              :
+              mainPlatesFavorites.map(plate => (
+                <Cards
+                  key={plate.id}
+                  id={plate.id}
+                  className='card'
+                  title={plate.title}
+                  img={plate.img}
+                  ingredients={plate.ingredients}
+                  price={plate.price}
 
+
+                  setFavoritesPlates={setFavoritesPlates}
+                  favoritePlates={favoritePlates}
+
+                />
+              )) 
+              
+            }
 
           </Section>
 
           <Section title='Sobremesas'>
-          {
-              plates2.map(plate => (
-                <Card
-                  className='card'
+
+            { /* Check if render all plates or favorite plates */
+              !showFavorites ? 
+            
+              dessertPlate.map(plate => (
+                <Cards
                   key={plate.id}
                   id={plate.id}
+                  className='card'
                   title={plate.title}
                   img={plate.img}
                   ingredients={plate.ingredients}
-                  price={plate.price}                  
+                  price={plate.price}
+                  setFavoritesPlates={setFavoritesPlates}
+                  favoritePlates={favoritePlates}
 
                 />
-              ))
-            }
+              )) 
+              :
+              dessertPlatesFavorites.map(plate => (
+                <Cards
+                  key={plate.id}
+                  id={plate.id}
+                  className='card'
+                  title={plate.title}
+                  img={plate.img}
+                  ingredients={plate.ingredients}
+                  price={plate.price}
 
+
+                  setFavoritesPlates={setFavoritesPlates}
+                  favoritePlates={favoritePlates}
+
+                />
+              )) 
+              
+            }
 
           </Section>
           
           <Section title='Bebidas'>
-          {
-              plates3.map(plate => (
-                <Card
+
+            { /* Check if render all plates or favorite plates */
+              !showFavorites ? 
+            
+              drinks.map(drink => (
+                <Cards
+                  key={drink.id}
+                  id={drink.id}
                   className='card'
-                  key={plate.id}
-                  id={plate.id}
-                  title={plate.title}
-                  img={plate.img}
-                  ingredients={plate.ingredients}
-                  price={plate.price}                  
+                  title={drink.title}
+                  img={drink.img}
+                  ingredients={drink.ingredients}
+                  price={drink.price}
+                  setFavoritesPlates={setFavoritesPlates}
+                  favoritePlates={favoritePlates}
 
                 />
-              ))
-            }
+              )) 
+              :
+              drinksFavorites.map(drink => (
+                <Cards
+                  key={drink.id}
+                  id={drink.id}
+                  className='card'
+                  title={drink.title}
+                  img={drink.img}
+                  ingredients={drink.ingredients}
+                  price={drink.price}
 
+
+                  setFavoritesPlates={setFavoritesPlates}
+                  favoritePlates={favoritePlates}
+
+                />
+              )) 
+              
+            }
 
           </Section>
           

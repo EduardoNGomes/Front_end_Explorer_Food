@@ -1,4 +1,3 @@
-import { Card } from "../Cards";
 import { Container } from "./style";
 
 import { useRef } from "react";

@@ -7,12 +7,12 @@ import { Button } from '../Button'
 
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
-export const Card = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, ...rest}) => {
+export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, ...rest}) => {
   const [favorite, setFavorite] = useState(false)
 
 
   const handdleFavorites = () =>{
-    //Change Icon color
+    //Change Icon 
     setFavorite(!favorite)
 
     //Verify if favorite plates include in favorites

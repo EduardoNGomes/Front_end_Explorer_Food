@@ -8,7 +8,10 @@ import { FaMoneyCheck } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { BsHexagonFill } from 'react-icons/bs'
 
-export const Header = () => {
+export const Header = ({handleShowFavorites}) => {
+
+
+
   return(
     <Container>
       
@@ -29,7 +32,7 @@ export const Header = () => {
       <ButtonTransparrent
         className='favorites'
         title='Favoritos'
-        
+        onClick={handleShowFavorites}
         Icon={AiOutlineHeart}
         iconSize={20}
         />
