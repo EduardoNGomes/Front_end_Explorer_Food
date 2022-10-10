@@ -8,6 +8,7 @@ import imgPlate from '../../assets/images/Mask group-11.png'
 import { Section } from "../../components/Section";
 import { Cards } from '../../components/Cards'
 import { useState } from "react";
+import { useEffect } from "react";
 
 export const Home = () => {
   //without back-end
@@ -169,6 +170,14 @@ export const Home = () => {
   ]
   //
 
+  const [ allQuantity, setAllQuantity ] = useState(0)
+  const [ allOrders, setAllOrders ] = useState([])
+
+
+  localStorage.setItem('@allQuantity', JSON.stringify(allQuantity))
+
+
+
   //Save all plates or favorite plates
   const [ favoritePlates, setFavoritesPlates ] = useState([])
 
@@ -204,12 +213,29 @@ export const Home = () => {
     setShowFavorites(!showFavorites)
   }
 
+
+
+  useEffect(() => {
+    const plate = JSON.parse(localStorage.getItem("@plates"))
+
+    if(plate){
+      setAllOrders(plate)
+      console.log(plate)
+    }
+  },[])
+
+  useEffect(() => {
+   localStorage.setItem("@plates",JSON.stringify(allOrders))
+
+  },[allOrders])
+
   return(
 
     
     <Container>
       <Header
         handleShowFavorites={handleShowFavorites}
+        allQuantity={allQuantity}
       />
 
         <Content>
@@ -236,9 +262,10 @@ export const Home = () => {
                   img={plate.img}
                   ingredients={plate.ingredients}
                   price={plate.price}
-                  setFavoritesPlates={setFavoritesPlates}
                   favoritePlates={favoritePlates}
-
+                  setFavoritesPlates={setFavoritesPlates}
+                  setAllQuantity={setAllQuantity}
+                  setAllOrders={setAllOrders}
                 />
               )) 
               :

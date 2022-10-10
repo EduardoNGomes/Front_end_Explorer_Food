@@ -8,7 +8,7 @@ import { Button } from '../Button'
 
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
-export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, ...rest}) => {
+export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, setAllQuantity, setAllOrders, ...rest}) => {
 
   const navigate = useNavigate()
 
@@ -46,11 +46,25 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
   }
 
   const handleRemoveQuantity = () => {
-    if(quantity <= 1){
+    if(quantity <= 1){  
       setQuantity(1)
       return alert('Quantidade mínima é 1')
     }
     setQuantity(prevState => prevState - 1)
+  }
+
+  const handleAllQuantity = () => {
+    const plate = {
+      id:id,
+      name: title,
+      img: img,
+      price: price,
+      quantity: quantity,
+    }
+
+    setAllOrders(prevState =>[...prevState, plate])
+    setAllQuantity(prevState => prevState + quantity)
+
   }
 
 
@@ -88,6 +102,7 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
         </div>
         <Button
           title='incluir'
+          onClick={handleAllQuantity}
         />
       </div>
 

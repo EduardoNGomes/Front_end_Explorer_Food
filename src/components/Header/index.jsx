@@ -10,7 +10,7 @@ import { BsHexagonFill } from 'react-icons/bs'
 
 import { useNavigate} from "react-router-dom";
 
-export const Header = ({handleShowFavorites}) => {
+export const Header = ({ handleShowFavorites, allQuantity}) => {
   const navigate = useNavigate()
   
   const handleOrders = () => {
@@ -67,7 +67,7 @@ export const Header = ({handleShowFavorites}) => {
       <ButtonTransparrent 
         Icon={AiOutlineShoppingCart}
         iconSize={30}
-        title="0"
+        title={allQuantity}
         className='shop-cart'
         onClick={handleShopCart}
       />
