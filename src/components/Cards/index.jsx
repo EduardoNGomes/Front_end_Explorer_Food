@@ -1,6 +1,7 @@
 import { Container } from "./style";
 
 import { useState, } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
@@ -8,8 +9,11 @@ import { Button } from '../Button'
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
 export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, ...rest}) => {
-  const [favorite, setFavorite] = useState(false)
 
+  const navigate = useNavigate()
+
+  const [favorite, setFavorite] = useState(false)
+  const [quantity, setQuantity] = useState(1) 
 
   const handdleFavorites = () =>{
     //Change Icon 
@@ -32,6 +36,24 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
 
   }
 
+  const handleDetails = () => {
+    navigate(`/details/${id}`)
+  }
+
+  const handleAddQuantity = () => {
+    setQuantity(prevState => prevState + 1)
+    console.log(quantity)
+  }
+
+  const handleRemoveQuantity = () => {
+    if(quantity <= 1){
+      setQuantity(1)
+      return alert('Quantidade mínima é 1')
+    }
+    setQuantity(prevState => prevState - 1)
+  }
+
+
   return(
     <Container {...rest}>
 
@@ -48,6 +70,7 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
       <ButtonTransparrent
         className='name'
         title={title}
+        onClick={handleDetails}
       />
       <p>{ingredients}</p>
 
@@ -55,9 +78,13 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
 
       <div className="quantity">
         <div>
-          <button>&minus;</button>
-          <span>01</span>
-          <button>&#43;</button>
+          <button onClick={handleRemoveQuantity}>
+            &minus;
+          </button>
+          <span>{quantity.toString().padStart(2,0)}</span>
+          <button onClick={handleAddQuantity}>
+              &#43;
+          </button>
         </div>
         <Button
           title='incluir'

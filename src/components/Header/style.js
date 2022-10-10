@@ -9,8 +9,8 @@ export const Container = styled.div`
 
   display: grid;
   align-items: center;
-  grid-template-columns: 2fr 1fr 3fr 1fr 1fr;
-  grid-template-areas: 'logo favorites search request exit';
+  grid-template-columns: 2fr 1fr 3fr 1fr 0.5fr 0.5fr;
+  grid-template-areas: 'logo favorites search request shop-cart exit';
   gap: 3.2rem;
 
   .logo {
@@ -71,13 +71,17 @@ export const Container = styled.div`
     align-items: center;
   }
 
+  .shop-cart {
+    grid-area: shop-cart;
+    margin: 0;
+    margin-left: 15px;
+  }
+
   .exit {
     grid-area: exit;
-
-    align-items: center;
-    background: transparent;
-    border: none;
+    margin: 0;
   }
+
   @media (max-width: 1280px) {
     padding: 1rem 10rem;
   }
@@ -92,10 +96,10 @@ export const Container = styled.div`
 
     align-items: center;
 
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 0.5fr 0.5fr;
     grid-template-areas:
-      'logo favorites request exit'
-      'search search search search';
+      'logo favorites request shop-cart exit'
+      'search search search search search';
 
     .logo {
       width: 100%;
@@ -123,11 +127,11 @@ export const Container = styled.div`
     padding: 10px;
     display: grid;
 
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
     grid-template-rows: 50px 50px 50px;
     grid-template-areas:
-      'favorites request exit'
-      'logo logo logo'
-      'search search search';
+      'favorites request  shop-cart exit'
+      'logo logo logo logo'
+      'search search search search';
   }
 `

@@ -1,21 +1,28 @@
 import { Container, Content } from "./style";
 
+import { useNavigate } from "react-router-dom";
+
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Button } from '../../components/Button'
-
-import { MdOutlineArrowBackIos } from 'react-icons/md'
 import { ButtonTransparrent } from "../../components/ButtonTransparent";
 
 import imgPlate from '../../assets/images/Mask group-11.png'
 import imgIngredients from '../../assets/images/pngegg (15) 1.png'
 
 import { FaMoneyCheck} from 'react-icons/fa'
+import { MdOutlineArrowBackIos } from 'react-icons/md'
+
 
 
 
 
 export const Details = () => {
+  const navigate = useNavigate()
+
+  const handleBack = () => {
+    navigate(-1)
+  }
   return(
     <Container>
       <Header/>
@@ -26,6 +33,7 @@ export const Details = () => {
             Icon={MdOutlineArrowBackIos}
             iconSize={30}
             title='voltar'
+            onClick={handleBack}
           />
 
 

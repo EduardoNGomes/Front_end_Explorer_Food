@@ -189,7 +189,11 @@ export const Home = () => {
     const dessertPlatesFiltered = dessertPlate.filter(dessert => favoritePlates.includes(dessert.id))
     const drinksFiltered = drinks.filter(drink => favoritePlates.includes(drink.id))
 
-
+    if(showFavorites === false){
+      if(favoritePlates.length === 0){
+        return alert('Não existem pratos favoritos')
+      }
+    }
     
     //Add favorites plates to new array to render
     setMainPlatesFavorites(mainPlatesFiltered )

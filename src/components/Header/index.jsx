@@ -3,31 +3,43 @@ import { Container } from "./style";
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
 
-import { AiOutlineSearch , AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineSearch , AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaMoneyCheck } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { BsHexagonFill } from 'react-icons/bs'
 
+import { useNavigate} from "react-router-dom";
+
 export const Header = ({handleShowFavorites}) => {
+  const navigate = useNavigate()
+  
+  const handleOrders = () => {
+    navigate('/orders')
+  }
+
+  const handleHome = () => {
+    navigate('/')
+  }
+
+  const handleShopCart = () => {
+    navigate('/payment')
+
+  }
 
 
 
   return(
-    <Container>
-      
-      
+    <Container>      
 
       <div className="logo">
-
         <ButtonTransparrent
           Icon={BsHexagonFill}
           iconSize={30}
           title='Food Explorer' 
           className='logo'
+          onClick={handleHome}
         />
-
       </div>
-
 
       <ButtonTransparrent
         className='favorites'
@@ -35,7 +47,7 @@ export const Header = ({handleShowFavorites}) => {
         onClick={handleShowFavorites}
         Icon={AiOutlineHeart}
         iconSize={20}
-        />
+      />
 
       <div className="search">
         <AiOutlineSearch 
@@ -49,14 +61,24 @@ export const Header = ({handleShowFavorites}) => {
         title='Pedidos'
         Icon={FaMoneyCheck}
         className='request'
-        />
+        onClick={handleOrders}
+      />
 
-      <button className="exit">
-        <ImExit
-          size={30}
-          color='white'
-          />
-      </button>
+      <ButtonTransparrent 
+        Icon={AiOutlineShoppingCart}
+        iconSize={30}
+        title="0"
+        className='shop-cart'
+        onClick={handleShopCart}
+      />
+
+      <ButtonTransparrent
+        Icon={ImExit}
+        iconSize={30}
+        className='exit'
+      />
+
+
 
     </Container>
   )

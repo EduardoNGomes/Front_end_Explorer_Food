@@ -11,11 +11,11 @@ export const Section = ({title, children}) => {
   const carousel = useRef(null)  
 
   const scrollToRight = () =>{
-      carousel.current.scrollLeft += 400
+      carousel.current.scrollLeft += 450
   }
 
   const scrollToLeft = () =>{
-    carousel.current.scrollLeft -= 400
+    carousel.current.scrollLeft -= 450
   }
 
 
