@@ -15,7 +15,7 @@ import { FaMoneyCheck} from 'react-icons/fa'
 
 
 
-export const Food = () => {
+export const Details = () => {
   return(
     <Container>
       <Header/>
