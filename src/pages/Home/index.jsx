@@ -171,11 +171,12 @@ export const Home = () => {
   //
 
   const [ allQuantity, setAllQuantity ] = useState(0)
-  const [ allOrders, setAllOrders ] = useState([])
 
-
-  localStorage.setItem('@allQuantity', JSON.stringify(allQuantity))
-
+  // State to save orders. It starts empty, but if it has data in localStorage it starts with that data
+  const [ allOrders, setAllOrders ] = useState(() =>{
+    const localData = localStorage.getItem("@plates")
+    return localData ? JSON.parse(localData) : []
+  })
 
 
   //Save all plates or favorite plates
@@ -214,16 +215,16 @@ export const Home = () => {
   }
 
 
-
+  // Get data in localStorage
   useEffect(() => {
     const plate = JSON.parse(localStorage.getItem("@plates"))
 
     if(plate){
       setAllOrders(plate)
-      console.log(plate)
     }
   },[])
 
+  // add new data to localStorage
   useEffect(() => {
    localStorage.setItem("@plates",JSON.stringify(allOrders))
 

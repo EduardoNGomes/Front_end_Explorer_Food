@@ -15,6 +15,7 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
   const [favorite, setFavorite] = useState(false)
   const [quantity, setQuantity] = useState(1) 
 
+  // Add or remove favorite plates
   const handdleFavorites = () =>{
     //Change Icon 
     setFavorite(!favorite)
@@ -36,15 +37,17 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
 
   }
 
+  // Change to page details using route params
   const handleDetails = () => {
     navigate(`/details/${id}`)
   }
 
+  // add one more amount
   const handleAddQuantity = () => {
     setQuantity(prevState => prevState + 1)
-    console.log(quantity)
   }
 
+  // remove one from quantity
   const handleRemoveQuantity = () => {
     if(quantity <= 1){  
       setQuantity(1)
@@ -54,7 +57,8 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
   }
 
   const handleAllQuantity = () => {
-    const plate = {
+    // Object Object containing the data
+    const plates = {
       id:id,
       name: title,
       img: img,
@@ -62,8 +66,28 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
       quantity: quantity,
     }
 
-    setAllOrders(prevState =>[...prevState, plate])
-    setAllQuantity(prevState => prevState + quantity)
+    // Save data from localStorage
+    const savedPlates = JSON.parse(localStorage.getItem("@plates"))
+    
+    // If localStorage is empty save the plate
+    if(!savedPlates){
+      setAllOrders(plates)
+    }
+    
+    // Create a new list removing plate if plate exist in localStorage
+    const filteredSavedPlates = savedPlates.filter(p => p.id !== plates.id)
+
+    // add the new list in allOrders(localStorage)
+    setAllOrders(filteredSavedPlates)
+    // add the plate in allOreders, without remove another data
+    setAllOrders(prevState =>[...prevState, plates])
+
+    // let sumQuantity = 0
+    // for(let item in savedPlates){
+    //   sumQuantity += savedPlates[item].quantity
+    // }
+    // console.log(sumQuantity)
+    // setAllQuantity(prevState => prevState + sumQuantity)
 
   }
 
