@@ -8,7 +8,7 @@ import { Button } from '../Button'
 
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
-export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, setAllQuantity, setAllOrders, ...rest}) => {
+export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, setAllOrders, ...rest}) => {
 
   const navigate = useNavigate()
 
@@ -16,7 +16,7 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
   const [quantity, setQuantity] = useState(1) 
 
   // Add or remove favorite plates
-  const handdleFavorites = () =>{
+  const handleFavorites = () =>{
     //Change Icon 
     setFavorite(!favorite)
 
@@ -25,14 +25,20 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
 
     if(isFavoritePlate){
       //return new list without id existing in old list
-      const FilteredPlates = favoritePlates.filter(ids => ids !== id )
+      const filteredPlates = favoritePlates.filter(ids => ids !== id )
+
+      // 
+      localStorage.setItem('@favorites',JSON.stringify(filteredPlates))
       
       //add the new list to favoritePlates
-      setFavoritesPlates(FilteredPlates)
+      setFavoritesPlates(filteredPlates)
     }else{
 
       //add an id to the favoritePlates list, without removing old ids
       setFavoritesPlates(prevState => [...prevState , id])
+
+      // 
+      localStorage.setItem('@favorites',JSON.stringify(favoritePlates))
     }
 
   }
@@ -94,7 +100,7 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
         className='icon'
         iconSize={30}
         iconColor={favorite ? 'red' : ''}
-        onClick={handdleFavorites}
+        onClick={() => handleFavorites(id)}
       />
 
       <img src={img} alt="plate img" />

@@ -180,7 +180,11 @@ export const Home = () => {
 
 
   //Save all plates or favorite plates
-  const [ favoritePlates, setFavoritesPlates ] = useState([])
+  const [ favoritePlates, setFavoritesPlates ] = useState(() =>{
+    const localData = localStorage.getItem("@favorites")
+    return localData ? JSON.parse(localData) : []
+  })
+
 
   //Choose to show favorites or not
   const [ showFavorites, setShowFavorites ] = useState(false)
@@ -275,7 +279,6 @@ export const Home = () => {
                   price={plate.price}
                   favoritePlates={favoritePlates}
                   setFavoritesPlates={setFavoritesPlates}
-                  setAllQuantity={setAllQuantity}
                   setAllOrders={setAllOrders}
                 />
               )) 
