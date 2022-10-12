@@ -214,6 +214,14 @@ export const Home = () => {
     setShowFavorites(!showFavorites)
   }
 
+  // This function changes the order quantity
+  const handleQuantity = () => {
+    let sum = 0
+    allOrders.forEach(plate => {
+      sum += Number(plate.quantity)
+    });
+    setAllQuantity(sum)
+  }
 
   // Get data in localStorage
   useEffect(() => {
@@ -221,12 +229,14 @@ export const Home = () => {
 
     if(plate){
       setAllOrders(plate)
+      handleQuantity()
     }
   },[])
 
   // add new data to localStorage
   useEffect(() => {
    localStorage.setItem("@plates",JSON.stringify(allOrders))
+   handleQuantity()
 
   },[allOrders])
 

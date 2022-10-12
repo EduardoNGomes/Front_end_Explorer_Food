@@ -77,17 +77,11 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
     // Create a new list removing plate if plate exist in localStorage
     const filteredSavedPlates = savedPlates.filter(p => p.id !== plates.id)
 
+
     // add the new list in allOrders(localStorage)
     setAllOrders(filteredSavedPlates)
-    // add the plate in allOreders, without remove another data
+    // add the plate in allOrders, without remove another data
     setAllOrders(prevState =>[...prevState, plates])
-
-    // let sumQuantity = 0
-    // for(let item in savedPlates){
-    //   sumQuantity += savedPlates[item].quantity
-    // }
-    // console.log(sumQuantity)
-    // setAllQuantity(prevState => prevState + sumQuantity)
 
   }
 
