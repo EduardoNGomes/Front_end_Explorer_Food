@@ -1,6 +1,6 @@
 import { Container, Content } from "./style";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -13,64 +13,28 @@ import imgPlate from '../../assets/images/Mask group-10.png'
 
 
 export const Payment = () => {
-  //Teste front-end
-  const pedidos = [
-    {
-      id: 1,
-      img: imgPlate,
-      quantity: '2',
-      name: 'Salada Radish',
-      value: '25.10'   
-    },
-    {
-      id: 2,
-      img: imgPlate,
-      quantity: '2',
-      name: 'Salada Radish',
-      value: '35.10'   
-    },
-    {
-      id: 3,
-      img: imgPlate,
-      quantity: '3',
-      name: 'Salada Radish',
-      value: '20.05'   
-    },
-    {
-      id: 4,
-      img: imgPlate,
-      quantity: '2',
-      name: 'Salada Radish',
-      value: '25.05'  
-    },
-    {
-      id: 5,
-      img: imgPlate,
-      quantity: '2',
-      name: 'Salada Radish',
-      value: '25.55'
-    },
-    {
-      id: 6,
-      img: imgPlate,
-      quantity: '2',
-      name: 'Salada Radish',
-      value: '25.50'   
-    },
-
-  ]
-
   
-  
-  let sum = 0   
+  const [ value, setValue ] = useState(0)
 
-  function totalValue(){
-    for(let i of pedidos){
-      sum += Number(i.quantity) * Number(i.value)
-    }
-    return sum
+  // State to save orders. It starts empty, but if it has data in localStorage it starts with that data
+  const [ allOrders, setAllOrders ] = useState(() =>{
+    const localData = localStorage.getItem("@plates")
+    return localData ? JSON.parse(localData) : []
+  })
+
+  const removePlate = (id) => {
+    const filteredAllOrders = allOrders.filter(plate => plate.id !== id)
+    setAllOrders(filteredAllOrders)
+    localStorage.setItem("@plates", JSON.stringify(filteredAllOrders))
   }
-  totalValue()
+
+  useEffect(()=> {
+    let sum = 0
+    allOrders.forEach(plate => {
+      sum += Number(plate.price.replace(',', '.'))
+    });
+    setValue(sum)
+  },[])
 
   return(
     <Container>
@@ -82,19 +46,20 @@ export const Payment = () => {
 
           <div className="scroll">
 
-          {
-            pedidos.map(pedido => (
-              <div key={pedido.id} className='foods'>
-                <img src={pedido.img} alt="food img" />
+          { allOrders &&
+            allOrders.map(order => (
+              <div key={order.id} className='foods'>
+                <img src={order.img} alt="food img" />
                 <div>
                   <div className="infos">
-                    <span className="quantity">{pedido.quantity} x</span>
-                    <span className="name">{pedido.name}</span>
-                    <span className="value"> R$ {pedido.value}</span>
+                    <span className="quantity">{order.quantity} x</span>
+                    <span className="name">{order.name}</span>
+                    <span className="value"> R$ {order.price}</span>
                   </div>
 
                   <ButtonTransparrent
                     title='Excluir'
+                    onClick={() => removePlate(order.id)}
                   />
                 </div>
             </div>
@@ -104,7 +69,7 @@ export const Payment = () => {
           </div>
 
 
-          <h5>Total: R$ {sum} </h5> {/* */}
+          <h5>Total: R$ {value} </h5> {/* */}
         </div>
         
         <div className="payments">
