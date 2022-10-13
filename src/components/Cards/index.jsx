@@ -8,7 +8,7 @@ import { Button } from '../Button'
 
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
-export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates, favoritePlates, setAllOrders, ...rest}) => {
+export const Cards = ({title, img, id, description, price ,  setFavoritesPlates, favoritePlates, setAllOrders, ...rest}) => {
 
   const navigate = useNavigate()
 
@@ -109,8 +109,9 @@ export const Cards = ({title, img, id, ingredients, price ,  setFavoritesPlates,
         className='name'
         title={title}
         onClick={handleDetails}
+
       />
-      <p>{ingredients}</p>
+      <p>{description}</p>
 
       <h4>R$ {price}</h4>
 

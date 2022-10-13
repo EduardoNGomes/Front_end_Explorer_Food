@@ -17,49 +17,49 @@ export const Home = () => {
       id: '01',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'02',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'03',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'04',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'05',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'06',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'07',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
 
@@ -69,49 +69,49 @@ export const Home = () => {
       id:'08',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'09',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'10',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'11',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'12',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'13',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'14',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
 
@@ -121,49 +121,49 @@ export const Home = () => {
       id:'15',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'16',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'17',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'18',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'19',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'20',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
     {
       id:'21',
       title: 'Salada Ravanello',
       img: imgPlate,
-      ingredients: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
+      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
       price: '49,97'
     },
 
@@ -275,7 +275,7 @@ export const Home = () => {
                   className='card'
                   title={plate.title}
                   img={plate.img}
-                  ingredients={plate.ingredients}
+                  description={plate.description}
                   price={plate.price}
                   favoritePlates={favoritePlates}
                   setFavoritesPlates={setFavoritesPlates}
@@ -290,7 +290,7 @@ export const Home = () => {
                   className='card'
                   title={plate.title}
                   img={plate.img}
-                  ingredients={plate.ingredients}
+                  description={plate.description}
                   price={plate.price}
 
 
@@ -316,7 +316,7 @@ export const Home = () => {
                   className='card'
                   title={plate.title}
                   img={plate.img}
-                  ingredients={plate.ingredients}
+                  description={plate.description}
                   price={plate.price}
                   setFavoritesPlates={setFavoritesPlates}
                   favoritePlates={favoritePlates}
@@ -331,7 +331,7 @@ export const Home = () => {
                   className='card'
                   title={plate.title}
                   img={plate.img}
-                  ingredients={plate.ingredients}
+                  description={plate.description}
                   price={plate.price}
 
 
@@ -357,7 +357,7 @@ export const Home = () => {
                   className='card'
                   title={drink.title}
                   img={drink.img}
-                  ingredients={drink.ingredients}
+                  description={drink.description}
                   price={drink.price}
                   setFavoritesPlates={setFavoritesPlates}
                   favoritePlates={favoritePlates}
@@ -372,7 +372,7 @@ export const Home = () => {
                   className='card'
                   title={drink.title}
                   img={drink.img}
-                  ingredients={drink.ingredients}
+                  description={drink.description}
                   price={drink.price}
 
 
