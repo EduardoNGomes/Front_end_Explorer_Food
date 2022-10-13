@@ -84,6 +84,8 @@ export const Payment = () => {
 
           <OrdersPayment
             status='pending'
+            allOrders={allOrders}
+
           />
         </div>
 

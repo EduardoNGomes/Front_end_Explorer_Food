@@ -14,9 +14,18 @@ import { RiRestaurantLine } from 'react-icons/ri'
 
 
 
-export const OrdersPayment = ({status}) => {
+export const OrdersPayment = ({status, allOrders}) => {
 
   const [ paymentMethod, setPaymentMethod ] = useState(status)
+
+  const changePayment = () => {
+    console.log(allOrders)
+    if(allOrders.length === 0 ){
+      return alert('Não há itens no carrinho')
+    }else {
+      return setPaymentMethod('aproved')
+    }
+  }
 
 
   const haddlePayment = (statusReceive) => {
@@ -35,7 +44,7 @@ export const OrdersPayment = ({status}) => {
       case 'pix':
         return <Qrcode/>
       case 'credit':
-        return <Credit paymentMethod={() => setPaymentMethod('aproved')} />
+        return <Credit paymentMethod={changePayment} />
       case 'aproved':
         return(
           <div className="status-order">
