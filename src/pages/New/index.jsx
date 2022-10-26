@@ -8,11 +8,12 @@ import { MdOutlineArrowBackIos } from 'react-icons/md'
 import { FiUpload } from 'react-icons/fi'
 import { Tag } from "../../components/Tag";
 import { Input } from "../../components/Input";
+import { HeaderAdmin } from "../../components/HeaderAdmin";
 
 export const New = () => {
   return(
     <Container>
-      <Header/>
+      <HeaderAdmin/>
 
       <Content>
       <ButtonTransparrent

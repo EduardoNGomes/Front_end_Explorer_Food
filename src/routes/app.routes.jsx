@@ -34,26 +34,10 @@ export const AppRoutes = () => {
         </Routes>
       )
     }
-
-
   }
 
-
   return(
-
     handleRoutes()
-
-    // Using react-router-dom to wrap all apps Routes
-    // <Routes>
-    //   {/* Create routes access with react-router-dom */}
-      // <Route path='/' element={<Home/>}/>
-      // <Route path='/details/:id' element={<Details/>}/>
-      // <Route path='/orders' element={<Orders/>}/>
-      // <Route path='/payment' element={<Payment/>}/>
-
-    //   <Route path='/new' element={<New/>}/>
-    //   <Route path='/order' element={<OrdersAdmin/>}/>
-    // </Routes>
   )
 }
 
