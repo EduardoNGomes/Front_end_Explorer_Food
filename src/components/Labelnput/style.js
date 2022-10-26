@@ -16,7 +16,7 @@ export const Container = styled.div`
   }
 
   input {
-    color: ${({ theme }) => theme.COLORS.COLOR_SUB_TEXT_GRAY};
+    color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
 
     padding: 1rem 0.5rem;
     background: transparent;

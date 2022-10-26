@@ -9,6 +9,7 @@ import { ImExit } from 'react-icons/im'
 import { BsHexagonFill } from 'react-icons/bs'
 
 import { useNavigate} from "react-router-dom";
+import { useAuth } from '../../hooks/auth.jsx'
 
 export const Header = ({ handleShowFavorites, allQuantity}) => {
   const navigate = useNavigate()
@@ -25,6 +26,9 @@ export const Header = ({ handleShowFavorites, allQuantity}) => {
     navigate('/payment')
 
   }
+
+  const {signOut} = useAuth()
+
 
 
 
@@ -76,6 +80,7 @@ export const Header = ({ handleShowFavorites, allQuantity}) => {
         Icon={ImExit}
         iconSize={30}
         className='exit'
+        onClick={signOut}
       />
 
 

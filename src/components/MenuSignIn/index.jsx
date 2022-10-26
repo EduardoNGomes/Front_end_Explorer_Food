@@ -1,15 +1,27 @@
 import { LabelInput } from "../Labelnput";
 import { Container } from "./style";
 
-import {useState} from 'react'
+import { useState } from 'react'
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "../Button";
 import { ButtonTransparrent } from "../ButtonTransparent";
 
+
 export const MenuSignIn = ({title, ...rest}) => {
-  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const {signIn} = useAuth()
+
+  const navigate = useNavigate()
+
+  const handleSignIn = () =>{
+
+    !email || !password ? alert('Preencha todos os campos') : signIn({email, password})
+
+  }
 
   return(
     <Container {...rest}>
@@ -36,10 +48,12 @@ export const MenuSignIn = ({title, ...rest}) => {
 
       <Button
         title='Entrar'
+        onClick={handleSignIn}
       />
 
       <ButtonTransparrent
         title='Criar uma conta'
+        onClick={()=>navigate('/signup')}
       />
 
 

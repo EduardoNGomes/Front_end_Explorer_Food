@@ -2,6 +2,10 @@ import { LabelInput } from "../Labelnput";
 import { Container } from "./style";
 
 import {useState} from 'react'
+import { useNavigate } from "react-router-dom";
+
+import { api } from "../../services/api";
+
 import { Button } from "../Button";
 import { ButtonTransparrent } from "../ButtonTransparent";
 
@@ -10,8 +14,37 @@ export const MenuSignUp = ({title, ...rest}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const navigate = useNavigate()
+
+  const handleBack = () => {
+    navigate('/')
+  }
+
+  const response = () =>{
+    alert('Usuario cadastrado com sucesso')
+    handleBack()
+  }
+
+  function handleSignUp() {
+    if(!email || !name || !password){
+      return alert('Preencha todos os campos')
+    }
+
+    api.post('/users', {name, email, password})
+    .then((response()))
+    .catch(error => {
+      if(error.response){
+        alert(error.response.data.message)
+      }else{
+        alert('Nao foi possivel realizar o cadastro')
+      }
+
+    })
+  }
+
 
   return(
+
     <Container {...rest}>
       <h1>
         {title}
@@ -42,10 +75,12 @@ export const MenuSignUp = ({title, ...rest}) => {
 
       <Button
         title='Criar conta'
+        onClick={handleSignUp}
       />
 
       <ButtonTransparrent
         title='Já tenho uma conta'
+        onClick={handleBack}
       />
 
 

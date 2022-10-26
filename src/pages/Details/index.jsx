@@ -9,7 +9,6 @@ import { Button } from '../../components/Button'
 import { ButtonTransparrent } from "../../components/ButtonTransparent";
 
 import imgPlate from '../../assets/images/Mask group-11.png'
-import imgIngredients from '../../assets/images/pngegg (15) 1.png'
 
 import { FaMoneyCheck} from 'react-icons/fa'
 import { MdOutlineArrowBackIos } from 'react-icons/md'
@@ -25,22 +24,18 @@ export const Details = () => {
       {
         id: '01',
         name:'alface',
-        img:imgIngredients,
       },
       {
         id: '02',
         name:'alface',
-        img:imgIngredients,
       },
       {
         id: '03',
         name:'alface',
-        img:imgIngredients,
       },
       {
         id: '04',
         name:'alface',
-        img:imgIngredients,
       },
     ],
     price: 'R$ 25,97'
@@ -181,7 +176,7 @@ export const Details = () => {
             <li>
               {order.ingredients.map(ingredient => (
                 <ul key={ingredient.id}>
-                  <img src={ingredient.img} alt="ingredients" className="ingredients"/>
+                  <img src='' alt="ingredients" className="ingredients"/>
                   <span>{ingredient.name}</span>
                 </ul>
               ))}
