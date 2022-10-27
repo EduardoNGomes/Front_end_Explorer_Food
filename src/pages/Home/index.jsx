@@ -7,10 +7,13 @@ import imgPlate from '../../assets/images/Mask group-11.png'
 
 import { Section } from "../../components/Section";
 import { Cards } from '../../components/Cards'
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState,useEffect } from "react";
+import { useAuth } from '../../hooks/auth'
+
 
 export const Home = () => {
+  const {user} = useAuth()
+
   //without back-end
   const mainPlates = [
     {
@@ -248,10 +251,11 @@ export const Home = () => {
 
     
     <Container>
-      <Header
-        handleShowFavorites={handleShowFavorites}
-        allQuantity={allQuantity}
-      />
+
+      {user.admin ? <HeaderAdmin/> : <Header
+      handleShowFavorites={handleShowFavorites}
+      allQuantity={allQuantity}/>}
+
 
         <Content>
         

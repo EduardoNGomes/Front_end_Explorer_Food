@@ -58,7 +58,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 30%;
+    width: 60%;
 
     font-size: 2rem;
     font-weight: 400;
@@ -87,6 +87,35 @@ export const Content = styled.div`
         border: 1px solid ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
       }
       cursor: pointer;
+    }
+  }
+  .select {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    font-size: 2rem;
+    font-weight: 400;
+
+    line-height: 16px;
+    select {
+      background: none;
+      border: 1px solid ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
+      border-radius: 5px;
+      color: ${({ theme }) => theme.COLORS.COLOR_TEXT_WHITE};
+      padding: 10px 20px;
+      width: 100%;
+      font-size: 1.6rem;
+    }
+    option {
+      font-size: 1.6rem;
+      background-color: #192227;
+
+      &:hover {
+        background: white;
+        color: black;
+      }
     }
   }
 
@@ -170,6 +199,9 @@ export const Content = styled.div`
       }
     }
 
+    .select {
+      width: 100%;
+    }
     .tags {
       justify-content: center;
       gap: 20px;

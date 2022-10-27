@@ -5,8 +5,13 @@ import { Footer } from '../../components/Footer'
 import { OrderStatus } from "../../components/OrderStatus";
 import { FaCircle } from 'react-icons/fa'
 
+import { useAuth } from '../../hooks/auth'
+
+
 
 export const OrdersAdmin = () => {
+  const {user} = useAuth()
+
   //teste front-end
   const items = [
     {
@@ -127,7 +132,7 @@ export const OrdersAdmin = () => {
 
   return(
     <Container>
-      <Header/>
+     {user.admin ? <HeaderAdmin/> : <Header/>}
 
       <Content>
         <h2>Pedidos</h2>

@@ -2,6 +2,8 @@ import { Container, Content } from "./style";
 
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useAuth } from '../../hooks/auth'
+
 
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -16,6 +18,8 @@ import { MdOutlineArrowBackIos } from 'react-icons/md'
 
 
 export const Details = () => {
+  const {user} = useAuth()
+
   const order = {
     name: 'Salada Ravanello',
     img: imgPlate  ,
@@ -151,9 +155,10 @@ export const Details = () => {
   },[allOrders])
   return(
     <Container>
-      <Header
-        allQuantity={allQuantity}
-      />
+
+      {user.admin ? <HeaderAdmin/> : <Header allQuantity={allQuantity}/>}
+
+
 
       <Content>
 

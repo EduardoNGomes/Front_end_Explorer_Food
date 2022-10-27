@@ -4,8 +4,13 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { OrderStatus } from "../../components/OrderStatus";
 
+import { useAuth } from '../../hooks/auth'
+
+
 
 export const Orders = () => {
+  const {user} = useAuth()
+
   //teste front-end
   const items = [
     {
@@ -126,7 +131,7 @@ export const Orders = () => {
 
   return(
     <Container>
-      <Header/>
+      {user.admin ? <HeaderAdmin/> : <Header/>}
 
       <Content>
         <h2>Pedidos</h2>

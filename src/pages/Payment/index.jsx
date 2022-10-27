@@ -1,6 +1,8 @@
 import { Container, Content } from "./style";
 
 import { useEffect, useState } from "react";
+import { useAuth } from '../../hooks/auth'
+
 
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -11,6 +13,7 @@ import { ButtonTransparrent } from "../../components/ButtonTransparent";
 
 
 export const Payment = () => {
+  const {user} = useAuth()
   
   // State to set total value of orders
   const [ value, setValue ] = useState(0)
@@ -45,7 +48,7 @@ export const Payment = () => {
 
   return(
     <Container>
-      <Header/>
+      {user.admin ? <HeaderAdmin/> : <Header/>}
       <Content>
         
         <div className="orders">
