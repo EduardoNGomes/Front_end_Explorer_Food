@@ -26,7 +26,7 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 1280px;
-  height: 70vh;
+  height: 75vh;
 
   overflow-y: auto;
 

@@ -1,193 +1,36 @@
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import { Container, Content } from "./style";
 
-import imgBanner from '../../assets/images/imageHome.png'
-import imgPlate from '../../assets/images/Mask group-11.png'
-
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
 import { Section } from "../../components/Section";
 import { Cards } from '../../components/Cards'
+
+import imgBanner from '../../assets/images/imageHome.png'
+
 import { useState,useEffect } from "react";
 import { useAuth } from '../../hooks/auth'
+import { api } from "../../services/api";
 
 
 export const Home = () => {
   const {user} = useAuth()
 
-  //without back-end
-  const mainPlates = [
-    {
-      id: '01',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'02',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'03',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'04',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'05',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'06',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'07',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
+  const [plates, setPlates] = useState([])
+  const [mainPlates,setMainPlates] = useState([]) 
+  const [dessertPlates,setDessertPlates] = useState([]) 
+  const [drinks,setDrinks] = useState([]) 
 
-  ]
-  const dessertPlate = [
-    {
-      id:'08',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'09',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'10',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'11',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'12',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'13',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'14',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-
-  ]
-  const drinks = [
-    {
-      id:'15',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'16',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'17',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'18',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'19',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'20',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-    {
-      id:'21',
-      title: 'Salada Ravanello',
-      img: imgPlate,
-      description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-      price: '49,97'
-    },
-
-  ]
-  //
 
   const [ allQuantity, setAllQuantity ] = useState(0)
 
   // State to save orders. It starts empty, but if it has data in localStorage it starts with that data
   const [ allOrders, setAllOrders ] = useState(() =>{
-    const localData = localStorage.getItem("@plates")
+    const localData = localStorage.getItem("@foodexplorer:plates")
     return localData ? JSON.parse(localData) : []
   })
 
 
   //Save all plates or favorite plates
-  const [ favoritePlates, setFavoritesPlates ] = useState(() =>{
-    const localData = localStorage.getItem("@favorites")
-    return localData ? JSON.parse(localData) : []
-  })
-
 
   //Choose to show favorites or not
   const [ showFavorites, setShowFavorites ] = useState(false)
@@ -201,22 +44,12 @@ export const Home = () => {
 
   const handleShowFavorites = () => {
 
-    //Check which plates in favorites 
-    const mainPlatesFiltered = mainPlates.filter(main => favoritePlates.includes(main.id))
-    const dessertPlatesFiltered = dessertPlate.filter(dessert => favoritePlates.includes(dessert.id))
-    const drinksFiltered = drinks.filter(drink => favoritePlates.includes(drink.id))
 
     if(showFavorites === false){
       if(favoritePlates.length === 0){
         return alert('Não existem pratos favoritos')
       }
-    }
-    
-    //Add favorites plates to new array to render
-    setMainPlatesFavorites(mainPlatesFiltered )
-    setDessertPlatesFavorites(dessertPlatesFiltered)
-    setDrinksFavorites(drinksFiltered)
-
+    }    
     //Show favorite On/Off
     setShowFavorites(!showFavorites)
   }
@@ -230,9 +63,10 @@ export const Home = () => {
     setAllQuantity(sum)
   }
 
+
   // Get data in localStorage
   useEffect(() => {
-    const plate = JSON.parse(localStorage.getItem("@plates"))
+    const plate = JSON.parse(localStorage.getItem("@foodexplorer:plates"))
 
     if(plate){
       setAllOrders(plate)
@@ -242,10 +76,32 @@ export const Home = () => {
 
   // add new data to localStorage
   useEffect(() => {
-   localStorage.setItem("@plates",JSON.stringify(allOrders))
+   localStorage.setItem("@foodexplorer:plates",JSON.stringify(allOrders))
    handleQuantity()
 
   },[allOrders])
+
+  useEffect(() =>{
+    const fetchPlates = async () => {
+      const response = await api.get('/plates')
+      setPlates(response.data)
+    }
+    fetchPlates()
+  }, [])
+
+  useEffect(()=> {
+    const selectPlates = () => {
+      const main = plates.filter(plate => plate.type == 'Prato Principal')
+      setMainPlates(main)
+
+      const dessert = plates.filter(plate => plate.type == 'Sobremesa')
+      setDessertPlates(dessert)
+
+      const drink = plates.filter(plate => plate.type == 'Bebida')
+      setDrinks(drink)
+    }
+    selectPlates()
+  },[])
 
   return(
 
@@ -271,7 +127,6 @@ export const Home = () => {
 
             { /* Check if render all plates or favorite plates */
               !showFavorites ? 
-            
               mainPlates.map(plate => (
                 <Cards
                   key={plate.id}
@@ -281,8 +136,6 @@ export const Home = () => {
                   img={plate.img}
                   description={plate.description}
                   price={plate.price}
-                  favoritePlates={favoritePlates}
-                  setFavoritesPlates={setFavoritesPlates}
                   setAllOrders={setAllOrders}
                 />
               )) 
@@ -298,8 +151,8 @@ export const Home = () => {
                   price={plate.price}
 
 
-                  setFavoritesPlates={setFavoritesPlates}
-                  favoritePlates={favoritePlates}
+                  
+                  
 
                 />
               )) 
@@ -313,7 +166,7 @@ export const Home = () => {
             { /* Check if render all plates or favorite plates */
               !showFavorites ? 
             
-              dessertPlate.map(plate => (
+              dessertPlates.map(plate => (
                 <Cards
                   key={plate.id}
                   id={plate.id}
@@ -322,8 +175,6 @@ export const Home = () => {
                   img={plate.img}
                   description={plate.description}
                   price={plate.price}
-                  setFavoritesPlates={setFavoritesPlates}
-                  favoritePlates={favoritePlates}
 
                 />
               )) 
@@ -337,11 +188,6 @@ export const Home = () => {
                   img={plate.img}
                   description={plate.description}
                   price={plate.price}
-
-
-                  setFavoritesPlates={setFavoritesPlates}
-                  favoritePlates={favoritePlates}
-
                 />
               )) 
               
@@ -363,8 +209,8 @@ export const Home = () => {
                   img={drink.img}
                   description={drink.description}
                   price={drink.price}
-                  setFavoritesPlates={setFavoritesPlates}
-                  favoritePlates={favoritePlates}
+                  
+                  
 
                 />
               )) 
@@ -378,11 +224,6 @@ export const Home = () => {
                   img={drink.img}
                   description={drink.description}
                   price={drink.price}
-
-
-                  setFavoritesPlates={setFavoritesPlates}
-                  favoritePlates={favoritePlates}
-
                 />
               )) 
               

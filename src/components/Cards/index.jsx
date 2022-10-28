@@ -1,12 +1,13 @@
 import { Container } from "./style";
 
-import { useState, } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
 
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
+import { api } from "../../services/api";
 
 export const Cards = ({title, img, id, description, price ,  setFavoritesPlates, favoritePlates, setAllOrders, ...rest}) => {
 
@@ -14,7 +15,6 @@ export const Cards = ({title, img, id, description, price ,  setFavoritesPlates,
 
   const [favorite, setFavorite] = useState(false)
   const [quantity, setQuantity] = useState(1) 
-
   // Add or remove favorite plates
   const handleFavorites = () =>{
     //Change Icon 
@@ -103,7 +103,7 @@ export const Cards = ({title, img, id, description, price ,  setFavoritesPlates,
         onClick={() => handleFavorites(id)}
       />
 
-      <img src={img} alt="plate img" />
+      <img src={`${api.defaults.baseURL}/plates/${img}`} alt="plate img" />
       
       <ButtonTransparrent
         className='name'
