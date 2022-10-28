@@ -9,38 +9,18 @@ import { Button } from '../Button'
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 import { api } from "../../services/api";
 
-export const Cards = ({title, img, id, description, price ,  setFavoritesPlates, favoritePlates, setAllOrders, ...rest}) => {
+export const Cards = ({title, img, id, description, price , setAllOrders, inFavorite, ...rest}) => {
 
   const navigate = useNavigate()
 
-  const [favorite, setFavorite] = useState(false)
+  const [favorite, setFavorite] = useState(inFavorite)
   const [quantity, setQuantity] = useState(1) 
   // Add or remove favorite plates
-  const handleFavorites = () =>{
+  const handleFavorites = async() =>{
     //Change Icon 
     setFavorite(!favorite)
-
-    //Verify if favorite plates include in favorites
-    const isFavoritePlate = favoritePlates.includes(id)
-
-    if(isFavoritePlate){
-      //return new list without id existing in old list
-      const filteredPlates = favoritePlates.filter(ids => ids !== id )
-
-      // 
-      localStorage.setItem('@favorites',JSON.stringify(filteredPlates))
-      
-      //add the new list to favoritePlates
-      setFavoritesPlates(filteredPlates)
-    }else{
-
-      //add an id to the favoritePlates list, without removing old ids
-      setFavoritesPlates(prevState => [...prevState , id])
-
-      // 
-      localStorage.setItem('@favorites',JSON.stringify(favoritePlates))
-    }
-
+    await api.post('/favorites', {plate_id: id})
+    // console.log(inFavorite)
   }
 
   // Change to page details using route params
@@ -91,7 +71,9 @@ export const Cards = ({title, img, id, description, price ,  setFavoritesPlates,
 
   }
 
-
+  useEffect(()=>{
+    // console.log(inFavorite)
+  })
   return(
     <Container {...rest}>
 

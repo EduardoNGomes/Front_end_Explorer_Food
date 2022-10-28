@@ -13,13 +13,23 @@ import { api } from "../../services/api";
 
 
 export const Home = () => {
-  const {user} = useAuth()
+  const { user } = useAuth()
 
-  const [plates, setPlates] = useState([])
-  const [mainPlates,setMainPlates] = useState([]) 
-  const [dessertPlates,setDessertPlates] = useState([]) 
-  const [drinks,setDrinks] = useState([]) 
+  const [ plates, setPlates ] = useState([])
+  const [ favoritePlates, setFavoritePlates ] = useState([])
 
+
+  const [ mainPlates,setMainPlates] = useState([]) 
+  const [ mainPlatesFavorites, setMainPlatesFavorites] = useState([])
+
+  const [ dessertPlates,setDessertPlates ] = useState([]) 
+  const [ dessertPlatesFavorites, setDessertPlatesFavorites ] = useState([])
+
+  const [ drinks,setDrinks ] = useState([]) 
+  const [ drinksFavorites, setDrinksFavorites ] = useState([])
+
+  //Choose to show favorites or not
+  const [ showFavorites, setShowFavorites ] = useState(false)
 
   const [ allQuantity, setAllQuantity ] = useState(0)
 
@@ -29,27 +39,25 @@ export const Home = () => {
     return localData ? JSON.parse(localData) : []
   })
 
+  const handleShowFavorites = async () => {
 
-  //Save all plates or favorite plates
+    if(!favoritePlates){
+      return alert('Não há pratos favoritos')
+    }
 
-  //Choose to show favorites or not
-  const [ showFavorites, setShowFavorites ] = useState(false)
+    const response = await api.get('/favorites')
 
-  // Save each plate favorite in the section 
-  const [ mainPlatesFavorites, setMainPlatesFavorites] = useState([])
-  const [ dessertPlatesFavorites, setDessertPlatesFavorites] = useState([])
-  const [ drinksFavorites, setDrinksFavorites] = useState([])
+    setFavoritePlates(response.data)
 
+    const mainFavorites = favoritePlates.filter(plate => plate.type == 'Prato Principal')
+    setMainPlatesFavorites(mainFavorites)
 
+    const dessertFavorites = favoritePlates.filter(plate => plate.type == 'Sobremesa')
+    setDessertPlatesFavorites(dessertFavorites)
 
-  const handleShowFavorites = () => {
-
-
-    if(showFavorites === false){
-      if(favoritePlates.length === 0){
-        return alert('Não existem pratos favoritos')
-      }
-    }    
+    const drinkFavorite = favoritePlates.filter(plate => plate.type == 'Bebida')
+    setDrinksFavorites(drinkFavorite)
+  
     //Show favorite On/Off
     setShowFavorites(!showFavorites)
   }
@@ -63,6 +71,14 @@ export const Home = () => {
     setAllQuantity(sum)
   }
 
+  const data = (item) => {
+    console.log(favoritePlates.includes(item))
+    if(favoritePlates.includes(item)){
+      return true
+    }else{
+      return false
+    }
+  } 
 
   // Get data in localStorage
   useEffect(() => {
@@ -101,6 +117,11 @@ export const Home = () => {
       setDrinks(drink)
     }
     selectPlates()
+  },[])
+
+  useEffect(()=> {
+
+
   },[])
 
   return(
@@ -149,11 +170,6 @@ export const Home = () => {
                   img={plate.img}
                   description={plate.description}
                   price={plate.price}
-
-
-                  
-                  
-
                 />
               )) 
               
