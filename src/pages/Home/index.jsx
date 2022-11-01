@@ -43,11 +43,7 @@ export const Home = () => {
 
     if(!favoritePlates){
       return alert('Não há pratos favoritos')
-    }
-
-    const response = await api.get('/favorites')
-
-    setFavoritePlates(response.data)
+    } 
 
     const mainFavorites = favoritePlates.filter(plate => plate.type == 'Prato Principal')
     setMainPlatesFavorites(mainFavorites)
@@ -71,14 +67,26 @@ export const Home = () => {
     setAllQuantity(sum)
   }
 
-  const data = (item) => {
-    console.log(favoritePlates.includes(item))
-    if(favoritePlates.includes(item)){
-      return true
-    }else{
-      return false
+  // Get all plates
+  useEffect(() =>{
+    const fetchPlates = async () => {
+      const response = await api.get('/plates')
+      setPlates(response.data)
     }
-  } 
+    fetchPlates()
+
+  }, [])
+
+  // Get all favorites
+  useEffect( ()=>{
+    const fetchFavorites = async () => {
+
+      const response = await api.get('/favorites')
+      setFavoritePlates(response.data)
+    }
+
+    fetchFavorites()
+  },[])
 
   // Get data in localStorage
   useEffect(() => {
@@ -97,14 +105,7 @@ export const Home = () => {
 
   },[allOrders])
 
-  useEffect(() =>{
-    const fetchPlates = async () => {
-      const response = await api.get('/plates')
-      setPlates(response.data)
-    }
-    fetchPlates()
-  }, [])
-
+  // Select plates by type
   useEffect(()=> {
     const selectPlates = () => {
       const main = plates.filter(plate => plate.type == 'Prato Principal')
@@ -117,21 +118,23 @@ export const Home = () => {
       setDrinks(drink)
     }
     selectPlates()
-  },[])
-
-  useEffect(()=> {
-
-
-  },[])
+  },[plates])
 
   return(
 
     
     <Container>
 
-      {user.admin ? <HeaderAdmin/> : <Header
-      handleShowFavorites={handleShowFavorites}
-      allQuantity={allQuantity}/>}
+      {
+      user.admin ? 
+        <HeaderAdmin/> 
+        :  
+        <Header
+          handleShowFavorites={handleShowFavorites}
+          allQuantity={allQuantity}
+          favoriteTitle={showFavorites ? 'Todos' : 'Favoritos'}
+      />
+      }
 
 
         <Content>
@@ -144,9 +147,12 @@ export const Home = () => {
             </div>
           </div>
 
-          <Section title='Pratos principais'>
 
-            { /* Check if render all plates or favorite plates */
+          <Section title='Pratos principais'>
+    
+            { 
+
+            /* Check if render all plates or favorite plates */
               !showFavorites ? 
               mainPlates.map(plate => (
                 <Cards
@@ -170,16 +176,18 @@ export const Home = () => {
                   img={plate.img}
                   description={plate.description}
                   price={plate.price}
+                  setAllOrders={setAllOrders}
+
                 />
               )) 
-              
             }
 
           </Section>
-
+          
+          
           <Section title='Sobremesas'>
 
-            { /* Check if render all plates or favorite plates */
+            { 
               !showFavorites ? 
             
               dessertPlates.map(plate => (
@@ -191,6 +199,7 @@ export const Home = () => {
                   img={plate.img}
                   description={plate.description}
                   price={plate.price}
+                  setAllOrders={setAllOrders}
 
                 />
               )) 
@@ -204,6 +213,8 @@ export const Home = () => {
                   img={plate.img}
                   description={plate.description}
                   price={plate.price}
+                  setAllOrders={setAllOrders}
+
                 />
               )) 
               
@@ -211,9 +222,13 @@ export const Home = () => {
 
           </Section>
           
+          
+
+          
+
           <Section title='Bebidas'>
 
-            { /* Check if render all plates or favorite plates */
+            { 
               !showFavorites ? 
             
               drinks.map(drink => (
@@ -225,9 +240,7 @@ export const Home = () => {
                   img={drink.img}
                   description={drink.description}
                   price={drink.price}
-                  
-                  
-
+                  setAllOrders={setAllOrders}              
                 />
               )) 
               :
@@ -240,13 +253,14 @@ export const Home = () => {
                   img={drink.img}
                   description={drink.description}
                   price={drink.price}
+                  setAllOrders={setAllOrders}
                 />
-              )) 
-              
+              ))       
             }
 
           </Section>
-          
+
+        
         </Content>
 
       

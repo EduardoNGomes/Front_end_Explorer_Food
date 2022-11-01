@@ -2,7 +2,7 @@ import { Container, Content } from "./style";
 
 import { useEffect, useState } from "react";
 import { useAuth } from '../../hooks/auth'
-
+import { api } from "../../services/api";
 
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -20,7 +20,7 @@ export const Payment = () => {
 
   // State to save orders. It starts empty, but if it has data in localStorage it starts with that data
   const [ allOrders, setAllOrders ] = useState(() =>{
-    const localData = localStorage.getItem("@plates")
+    const localData = localStorage.getItem("@foodexplorer:plates")
     return localData ? JSON.parse(localData) : []
   })
 
@@ -34,7 +34,7 @@ export const Payment = () => {
     setAllOrders(filteredAllOrders)
 
     //Set the new array to localStorage
-    localStorage.setItem("@plates", JSON.stringify(filteredAllOrders))
+    localStorage.setItem("@foodexplorer:plates", JSON.stringify(filteredAllOrders))
   }
 
   //Set total value of orders
@@ -59,7 +59,7 @@ export const Payment = () => {
           { allOrders &&
             allOrders.map(order => (
               <div key={order.id} className='foods'>
-                <img src={order.img} alt="food img" />
+                <img src={`${api.defaults.baseURL}/plates/${order.img}`} alt="food img" />
                 <div>
                   <div className="infos">
                     <span className="quantity">{order.quantity} x</span>

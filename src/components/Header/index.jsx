@@ -11,7 +11,7 @@ import { BsHexagonFill } from 'react-icons/bs'
 import { useNavigate} from "react-router-dom";
 import { useAuth } from '../../hooks/auth.jsx'
 
-export const Header = ({ handleShowFavorites, allQuantity}) => {
+export const Header = ({ handleShowFavorites, allQuantity , favoriteTitle='Favoritos'}) => {
   const navigate = useNavigate()
   
   const handleOrders = () => {
@@ -29,9 +29,6 @@ export const Header = ({ handleShowFavorites, allQuantity}) => {
 
   const {signOut} = useAuth()
 
-
-
-
   return(
     <Container>      
 
@@ -47,7 +44,7 @@ export const Header = ({ handleShowFavorites, allQuantity}) => {
 
       <ButtonTransparrent
         className='favorites'
-        title='Favoritos'
+        title={favoriteTitle}
         onClick={handleShowFavorites}
         Icon={AiOutlineHeart}
         iconSize={20}

@@ -9,18 +9,17 @@ import { Button } from '../Button'
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 import { api } from "../../services/api";
 
-export const Cards = ({title, img, id, description, price , setAllOrders, inFavorite, ...rest}) => {
+export const Cards = ({title, img, id, description, price , setAllOrders, ...rest}) => {
 
   const navigate = useNavigate()
 
-  const [favorite, setFavorite] = useState(inFavorite)
+  const [favorite, setFavorite] = useState(false)
   const [quantity, setQuantity] = useState(1) 
   // Add or remove favorite plates
   const handleFavorites = async() =>{
     //Change Icon 
     setFavorite(!favorite)
     await api.post('/favorites', {plate_id: id})
-    // console.log(inFavorite)
   }
 
   // Change to page details using route params
@@ -72,7 +71,14 @@ export const Cards = ({title, img, id, description, price , setAllOrders, inFavo
   }
 
   useEffect(()=>{
-    // console.log(inFavorite)
+    const fetchThisFavorite = async () => {
+      const response = await api.get(`/favorites/${id}`)
+      if(response.data.length > 0 ){
+        setFavorite(true)
+      }
+    }
+
+    fetchThisFavorite()
   })
   return(
     <Container {...rest}>

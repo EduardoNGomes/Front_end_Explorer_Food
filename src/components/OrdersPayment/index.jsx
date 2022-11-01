@@ -19,7 +19,6 @@ export const OrdersPayment = ({status, allOrders}) => {
   const [ paymentMethod, setPaymentMethod ] = useState(status)
 
   const changePayment = () => {
-    console.log(allOrders)
     if(allOrders.length === 0 ){
       return alert('Não há itens no carrinho')
     }else {
@@ -28,7 +27,7 @@ export const OrdersPayment = ({status, allOrders}) => {
   }
 
 
-  const haddlePayment = (statusReceive) => {
+  const handlePayment = (statusReceive) => {
     switch(statusReceive){
       case 'pending':
         return (
@@ -87,7 +86,7 @@ export const OrdersPayment = ({status, allOrders}) => {
       </div>
 
       <Image>
-        {haddlePayment(paymentMethod)}
+        {handlePayment(paymentMethod)}
       </Image>
 
 
