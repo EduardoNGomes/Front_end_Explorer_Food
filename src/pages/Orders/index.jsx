@@ -12,121 +12,121 @@ export const Orders = () => {
   const {user} = useAuth()
 
   //teste front-end
-  const items = [
-    {
-      status: 'pending',
-      id: '001',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
-    {
-      status: 'readying',
-      id: '002',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
-    {
-      status: 'readying',
-      id: '003',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
-    {
-      status: 'delivered',
-      id: '004',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
+  // const items = [
+  //   {
+  //     status: 'pending',
+  //     id: '001',
+  //     details: [
+  //       {
+  //         id: '1',
+  //         name:'Salada Radish',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '2',
+  //         name:'Torradas de Parma',
+  //         quantity: '1'
+  //       },
+  //       {
+  //         id: '3',
+  //         name:'Chá de Canela',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '4',
+  //         name:'Suco de Maracujá',
+  //         quantity: '1'
+  //       }
+  //     ],
+  //     date: '12/04',
+  //     hour: '11:30'
+  //   },
+  //   {
+  //     status: 'readying',
+  //     id: '002',
+  //     details: [
+  //       {
+  //         id: '1',
+  //         name:'Salada Radish',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '2',
+  //         name:'Torradas de Parma',
+  //         quantity: '1'
+  //       },
+  //       {
+  //         id: '3',
+  //         name:'Chá de Canela',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '4',
+  //         name:'Suco de Maracujá',
+  //         quantity: '1'
+  //       }
+  //     ],
+  //     date: '12/04',
+  //     hour: '11:30'
+  //   },
+  //   {
+  //     status: 'readying',
+  //     id: '003',
+  //     details: [
+  //       {
+  //         id: '1',
+  //         name:'Salada Radish',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '2',
+  //         name:'Torradas de Parma',
+  //         quantity: '1'
+  //       },
+  //       {
+  //         id: '3',
+  //         name:'Chá de Canela',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '4',
+  //         name:'Suco de Maracujá',
+  //         quantity: '1'
+  //       }
+  //     ],
+  //     date: '12/04',
+  //     hour: '11:30'
+  //   },
+  //   {
+  //     status: 'delivered',
+  //     id: '004',
+  //     details: [
+  //       {
+  //         id: '1',
+  //         name:'Salada Radish',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '2',
+  //         name:'Torradas de Parma',
+  //         quantity: '1'
+  //       },
+  //       {
+  //         id: '3',
+  //         name:'Chá de Canela',
+  //         quantity: '2'
+  //       },
+  //       {
+  //         id: '4',
+  //         name:'Suco de Maracujá',
+  //         quantity: '1'
+  //       }
+  //     ],
+  //     date: '12/04',
+  //     hour: '11:30'
+  //   },
 
-  ]
+  // ]
 
 
   return(

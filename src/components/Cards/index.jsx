@@ -56,7 +56,7 @@ export const Cards = ({title, img, id, description, price , setAllOrders, ...res
     
     // If localStorage is empty save the plate
     if(!savedPlates){
-      setAllOrders(plates)
+      setAllOrders(prevState =>[...prevState, plates])
     }
     
     // Create a new list removing plate if plate exist in localStorage

@@ -1,6 +1,7 @@
 import { Container, Image } from "./style";
 
 import { useState } from "react";
+import { api } from "../../services/api";
 
 
 import { ButtonTransparrent } from "../ButtonTransparent";
@@ -10,19 +11,31 @@ import { Credit } from '../Credit'
 import { MdOutlineAttachMoney, MdOutlineCreditCard} from 'react-icons/md'
 import { AiOutlineCheckCircle, AiOutlineClockCircle } from 'react-icons/ai'
 import { RiRestaurantLine } from 'react-icons/ri'
+import { useNavigate } from "react-router-dom";
 
 
 
 
 export const OrdersPayment = ({status, allOrders}) => {
 
+  const  navigate = useNavigate()
+
   const [ paymentMethod, setPaymentMethod ] = useState(status)
 
-  const changePayment = () => {
+  const changePayment = async () => {
     if(allOrders.length === 0 ){
       return alert('Não há itens no carrinho')
     }else {
-      return setPaymentMethod('aproved')
+      const description = localStorage.getItem("@foodexplorer:plates")
+
+      await api.post('/orders',{
+        status,
+        description
+      })
+      localStorage.removeItem("@foodexplorer:plates")
+      setPaymentMethod('aproved')
+      navigate('/')
+      return alert('Pedido efetuado')
     }
   }
 
