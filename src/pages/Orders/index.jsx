@@ -14,122 +14,6 @@ export const Orders = () => {
   const {user} = useAuth()
 
   const [items, setItems] = useState([])
-  //teste front-end
-  // const items = [
-  //   {
-  //     status: 'pending',
-  //     id: '001',
-  //     details: [
-  //       {
-  //         id: '1',
-  //         name:'Salada Radish',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '2',
-  //         name:'Torradas de Parma',
-  //         quantity: '1'
-  //       },
-  //       {
-  //         id: '3',
-  //         name:'Chá de Canela',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '4',
-  //         name:'Suco de Maracujá',
-  //         quantity: '1'
-  //       }
-  //     ],
-  //     date: '12/04',
-  //     hour: '11:30'
-  //   },
-  //   {
-  //     status: 'readying',
-  //     id: '002',
-  //     details: [
-  //       {
-  //         id: '1',
-  //         name:'Salada Radish',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '2',
-  //         name:'Torradas de Parma',
-  //         quantity: '1'
-  //       },
-  //       {
-  //         id: '3',
-  //         name:'Chá de Canela',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '4',
-  //         name:'Suco de Maracujá',
-  //         quantity: '1'
-  //       }
-  //     ],
-  //     date: '12/04',
-  //     hour: '11:30'
-  //   },
-  //   {
-  //     status: 'readying',
-  //     id: '003',
-  //     details: [
-  //       {
-  //         id: '1',
-  //         name:'Salada Radish',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '2',
-  //         name:'Torradas de Parma',
-  //         quantity: '1'
-  //       },
-  //       {
-  //         id: '3',
-  //         name:'Chá de Canela',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '4',
-  //         name:'Suco de Maracujá',
-  //         quantity: '1'
-  //       }
-  //     ],
-  //     date: '12/04',
-  //     hour: '11:30'
-  //   },
-  //   {
-  //     status: 'delivered',
-  //     id: '004',
-  //     details: [
-  //       {
-  //         id: '1',
-  //         name:'Salada Radish',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '2',
-  //         name:'Torradas de Parma',
-  //         quantity: '1'
-  //       },
-  //       {
-  //         id: '3',
-  //         name:'Chá de Canela',
-  //         quantity: '2'
-  //       },
-  //       {
-  //         id: '4',
-  //         name:'Suco de Maracujá',
-  //         quantity: '1'
-  //       }
-  //     ],
-  //     date: '12/04',
-  //     hour: '11:30'
-  //   },
-
-  // ]
 
   useEffect(()=> {
     const fetchOrder = async () => {
@@ -174,7 +58,7 @@ export const Orders = () => {
 
                 {items &&
                   items.map(item => (
-                    <tr key={item.id}>
+                    <tr key={String(item.id)}>
                       <td>
                         <OrderStatus status={item.status}/>
                       </td>
@@ -185,7 +69,7 @@ export const Orders = () => {
                         <p>
                           {
                            item.description.map((detail,index) => (
-                            <span key={detail.index}>{detail.quantity} x {item.description.length - 1 === index ? detail.name  : detail.name + ', ' } </span>
+                            <span key={index}>{detail.quantity} x {item.description.length - 1 === index ? detail.name  : detail.name + ', ' } </span>
                           ))
                           }
                         </p>

@@ -1,133 +1,62 @@
 import { Container, Content } from "./style";
 
 import { Header } from '../../components/Header'
+import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { Footer } from '../../components/Footer'
 import { OrderStatus } from "../../components/OrderStatus";
 import { FaCircle } from 'react-icons/fa'
 
 import { useAuth } from '../../hooks/auth'
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 
 
 export const OrdersAdmin = () => {
   const {user} = useAuth()
 
-  //teste front-end
-  const items = [
-    {
-      status: 'pending',
-      id: '001',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
-    {
-      status: 'readying',
-      id: '002',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
-    {
-      status: 'readying',
-      id: '003',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
-    {
-      status: 'delivered',
-      id: '004',
-      details: [
-        {
-          id: '1',
-          name:'Salada Radish',
-          quantity: '2'
-        },
-        {
-          id: '2',
-          name:'Torradas de Parma',
-          quantity: '1'
-        },
-        {
-          id: '3',
-          name:'Chá de Canela',
-          quantity: '2'
-        },
-        {
-          id: '4',
-          name:'Suco de Maracujá',
-          quantity: '1'
-        }
-      ],
-      date: '12/04',
-      hour: '11:30'
-    },
+  const [items, setItems] = useState([])
 
-  ]
+
+
+  const fetchOrder = async () => {
+    const response = await api.get('/ordersAdm')
+    const data = response.data
+    const newData = data.map(data => {
+      const time = data.update_at.split(' ')
+      return(        {
+        id: data.id,
+        status: data.status,
+        description: JSON.parse(data.description),
+        date: time[0].replaceAll('-', '/').split('/').reverse().join('/').slice(0,5),
+        hour: time[1].slice(0,5)
+      } )
+    })
+
+    setItems(newData)
+  }
+
+  const handleStatus = async (value,id) => {
+    await api.put(`/ordersAdm/${id}`, {
+      status : value
+    })
+    fetchOrder()
+  }
+
+  const handleOptions = (option) => {
+    switch(option){
+      case('Pendente'):
+        return 'pending'
+      case('Preparando'):
+        return 'readying'
+      case('Entregue'):
+        return 'delivered'
+    }
+  }
+
+  useEffect(()=> {
+    fetchOrder()
+  }, [])
 
 
   return(
@@ -150,9 +79,14 @@ export const OrdersAdmin = () => {
 
                 {
                   items.map(item => (
-                    <tr key={item.id}>
+                    <tr key={String(item.id)}>
                       <td>
-                        <select name="status" id="status" required>
+                        <select 
+                          name="status" 
+                          id="status" 
+                          value={item.status}
+                          onChange={(e) => handleStatus(e.target.value,item.id)}
+                        >
                           <option value="default">Status</option>
                           <option value="readying">Preparando</option>
                           <option value="pending">Pendente</option>
@@ -160,12 +94,12 @@ export const OrdersAdmin = () => {
                         </select>
                       </td>
                       <td>
-                        <p>{item.id}</p>
+                        <p>{String(item.id).padStart(5, '0')}</p>
                       </td>
                       <td>
                         <p>
-                          {item.details.map((detail,index) => (
-                            <span key={detail.id}>{detail.quantity} x {item.details.length - 1 === index ? detail.name  : detail.name + ', ' } </span>
+                          {item.description.map((detail,index) => (
+                            <span key={index}>{detail.quantity} x {item.description.length - 1 === index ? detail.name  : detail.name + ', ' } </span>
                           ))}
                         </p>
                       </td>

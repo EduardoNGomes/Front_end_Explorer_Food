@@ -13,6 +13,8 @@ import { useAuth } from '../../hooks/auth.jsx'
 
 export const Header = ({ handleShowFavorites, allQuantity , favoriteTitle='Favoritos'}) => {
   const navigate = useNavigate()
+  const {signOut} = useAuth()
+
   
   const handleOrders = () => {
     navigate('/orders')
@@ -27,7 +29,11 @@ export const Header = ({ handleShowFavorites, allQuantity , favoriteTitle='Favor
 
   }
 
-  const {signOut} = useAuth()
+  const handleSignOut = () => {
+    navigate('/')
+    signOut()
+  }
+
 
   return(
     <Container>      
@@ -77,7 +83,7 @@ export const Header = ({ handleShowFavorites, allQuantity , favoriteTitle='Favor
         Icon={ImExit}
         iconSize={30}
         className='exit'
-        onClick={signOut}
+        onClick={handleSignOut}
       />
 
 

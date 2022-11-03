@@ -5,6 +5,7 @@ import { api } from '../services/api'
 export const AuthContext = createContext({})
 
 function AuthProvider({children}){
+
   const [data, setData]= useState({})
 
   const signIn = async ({email, password}) => {

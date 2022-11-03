@@ -83,7 +83,7 @@ export const Content = styled.div`
   }
 
   td {
-    text-align: center;
+    text-align: left;
     color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
 
     font-size: 2rem;

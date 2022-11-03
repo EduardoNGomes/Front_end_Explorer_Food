@@ -13,6 +13,8 @@ import { useAuth } from '../../hooks/auth.jsx'
 
 export const HeaderAdmin = ({ handleShowFavorites, allQuantity}) => {
   const navigate = useNavigate()
+  const {signOut} = useAuth()
+
   
   const handleOrders = () => {
     navigate('/order')
@@ -22,12 +24,11 @@ export const HeaderAdmin = ({ handleShowFavorites, allQuantity}) => {
     navigate('/')
   }
 
-  const handleShopCart = () => {
-    navigate('/payment')
-
+  const handleSignOut = () => {
+    navigate('/')
+    signOut()
   }
 
-  const {signOut} = useAuth()
 
 
 
@@ -67,7 +68,7 @@ export const HeaderAdmin = ({ handleShowFavorites, allQuantity}) => {
         Icon={ImExit}
         iconSize={30}
         className='exit'
-        onClick={signOut}
+        onClick={handleSignOut}
       />
 
 
