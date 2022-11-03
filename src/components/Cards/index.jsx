@@ -52,7 +52,7 @@ export const Cards = ({title, img, id, description, price , setAllOrders, ...res
     }
 
     // Save data from localStorage
-    const savedPlates = JSON.parse(localStorage.getItem("@plates"))
+    const savedPlates = JSON.parse(localStorage.getItem("@foodexplorer:plates"))
     
     // If localStorage is empty save the plate
     if(!savedPlates){

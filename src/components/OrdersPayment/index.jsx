@@ -26,11 +26,17 @@ export const OrdersPayment = ({status, allOrders}) => {
     if(allOrders.length === 0 ){
       return alert('Não há itens no carrinho')
     }else {
-      const description = localStorage.getItem("@foodexplorer:plates")
+      const data = localStorage.getItem("@foodexplorer:plates")
+      const newData = JSON.parse(data).map(da => (
+        {
+          name: da.name,
+          quantity: da.quantity
+        }
+      ))
 
       await api.post('/orders',{
         status,
-        description
+        description: JSON.stringify(newData)
       })
       localStorage.removeItem("@foodexplorer:plates")
       setPaymentMethod('aproved')
