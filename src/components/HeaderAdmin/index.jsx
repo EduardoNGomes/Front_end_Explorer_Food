@@ -3,7 +3,7 @@ import { Container } from "./style";
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
 
-import { AiOutlineSearch ,AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlineSearch ,AiOutlinePlus,AiOutlineMenu,AiOutlineClose } from 'react-icons/ai'
 import { FaMoneyCheck } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { BsHexagonFill } from 'react-icons/bs'
@@ -13,11 +13,13 @@ import { useAuth } from '../../hooks/auth.jsx'
 import { useState,useEffect } from "react";
 import { api } from "../../services/api";
 
-export const HeaderAdmin = ({setPlates}) => {
+export const HeaderAdmin = ({setPlates=() => {}}) => {
   const {signOut} = useAuth()
 
   const navigate = useNavigate()
+  
   const [ search,setSearch ] = useState('')
+  const [active, setActive] = useState(false)
 
   
   const handleOrders = () => {
@@ -37,8 +39,13 @@ export const HeaderAdmin = ({setPlates}) => {
     navigate('/new')
   }
 
+
+  const handleMenu = () => {
+    setActive(!active)
+  }
+
   useEffect(()=> {
-    if(search.length > 0 && window.location.pathname == '/') {
+    if(search.length > 0 && window.location.pathname === '/') {
       const fetchPlates = async () => {  
         const response = await api.get(`/plates?title=${search}`)
     
@@ -69,6 +76,15 @@ export const HeaderAdmin = ({setPlates}) => {
         />
       </div>
 
+      <button 
+        className="menu" 
+        type="button"
+        onClick={handleMenu}
+      >
+        {active? <AiOutlineClose size={30}/> : <AiOutlineMenu size={30}/>}
+      </button>
+
+
       <ButtonTransparrent
         className='new'
         title='Novo Prato'
@@ -76,7 +92,6 @@ export const HeaderAdmin = ({setPlates}) => {
         Icon={AiOutlinePlus}
         iconSize={20}
       />
-
 
       <div className="search">
         <AiOutlineSearch 
@@ -105,6 +120,8 @@ export const HeaderAdmin = ({setPlates}) => {
         className='exit'
         onClick={handleSignOut}
       />
+
+
 
 
 

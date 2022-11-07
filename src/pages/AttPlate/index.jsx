@@ -90,6 +90,25 @@ export const AttPlate = () => {
   const handleBack = () => {
     navigate(-1)
   }
+  const fetchData = () => {
+    const response = api.get(`/plates/${params.id}`)
+    .then(
+      response => {
+        setDescription(response.data.description)
+        setName(response.data.title)
+        setPrice(response.data.price)
+        const newIng =response.data.ingredients.map(item => item.title)
+        setIngredients(newIng)
+      })
+
+
+  }
+
+    useEffect(() => {
+      fetchData()
+    },[])
+
+  
 
   return(
     <Container>
@@ -127,11 +146,9 @@ export const AttPlate = () => {
               <Input
                 title='Nome'
                 type='text'
-                placeholder='Ex.: Salada Ceasar'
+                placeholder={name}
                 name='name'
-                value={name}
                 onChange={(e) => setName(e.target.value)}
-                required
               />
             </div>
             <div className=" select">
@@ -182,11 +199,11 @@ export const AttPlate = () => {
               <Input
                 title='Preço'
                 type='text'
-                placeholder="R$ 00,00" 
+                placeholder={price}
                 name='price'
+                value={price}
                 onChange={(e)=>setPrice(e.target.value)}
                 required
-
               />
             </div>
           </div>
@@ -196,7 +213,7 @@ export const AttPlate = () => {
               <h3>Descrição</h3>
               <textarea 
                 name="description" id="description"  
-                placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                placeholder={description}
                 onChange={(e)=>setDescription(e.target.value)}
               />
             </div>

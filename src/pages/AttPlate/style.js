@@ -203,10 +203,12 @@ export const Content = styled.div`
       width: 100%;
     }
     .tags {
-      justify-content: center;
-      gap: 20px;
+      justify-content: flex-start;
+      gap: 10px;
       div {
-        width: 40%;
+        margin-left: 10px;
+        width: 45%;
+        padding: 2px;
       }
     }
     .price {
@@ -220,6 +222,13 @@ export const Content = styled.div`
   @media (max-width: 400px) {
     .wrapper {
       flex-direction: column;
+    }
+    .tags {
+      div {
+        padding: 5px 0;
+        margin-left: 0px;
+        width: 100%;
+      }
     }
   }
 `
