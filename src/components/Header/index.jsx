@@ -8,13 +8,15 @@ import { FaMoneyCheck } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { BsHexagonFill } from 'react-icons/bs'
 
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { useAuth } from '../../hooks/auth.jsx'
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
-export const Header = ({ handleShowFavorites, allQuantity , favoriteTitle='Favoritos'}) => {
+export const Header = ({ handleShowFavorites, allQuantity, setPlates , favoriteTitle='Favoritos'}) => {
   const navigate = useNavigate()
   const {signOut} = useAuth()
-
+  const [ search,setSearch ] = useState('')
   
   const handleOrders = () => {
     navigate('/orders')
@@ -26,13 +28,32 @@ export const Header = ({ handleShowFavorites, allQuantity , favoriteTitle='Favor
 
   const handleShopCart = () => {
     navigate('/payment')
-
   }
 
   const handleSignOut = () => {
     navigate('/')
     signOut()
   }
+
+
+  useEffect(()=> {
+    if(search.length > 0 && window.location.pathname == '/') {
+      const fetchPlates = async () => {  
+        const response = await api.get(`/plates?title=${search}`)
+    
+        setPlates(response.data)
+      }
+      fetchPlates()
+    } else if(search.length == 0 ){
+      const fetchPlates = async () => {
+        const response = await api.get(`/plates`)
+
+        setPlates(response.data)
+      }
+      fetchPlates()
+
+    }
+  },[search])
 
 
   return(
@@ -61,7 +82,11 @@ export const Header = ({ handleShowFavorites, allQuantity , favoriteTitle='Favor
           size={20} 
           color='#C4C4C4'
           />
-        <input type="text" placeholder="Busque pelas opções de pratos" />
+        <input 
+          type="text" 
+          placeholder="Busque pelas opções de pratos" 
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
 
       <Button

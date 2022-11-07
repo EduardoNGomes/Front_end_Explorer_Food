@@ -1,7 +1,6 @@
 import { Container, Content } from "./style";
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from '../../hooks/auth'
 
@@ -14,8 +13,11 @@ import { HeaderAdmin } from "../../components/HeaderAdmin";
 import { ButtonTransparrent } from '../../components/ButtonTransparent'
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const New = () => {
+export const AttPlate = () => {
+  const params = useParams()
+
   const {user} = useAuth()
 
   const navigate = useNavigate()
@@ -32,6 +34,7 @@ export const New = () => {
 
   const options = ['Prato Principal', 'Sobremesa', 'Bebida']
   const [type,setType] = useState(options[0])
+
 
 
   const handleAddIngredient = () => {
@@ -61,6 +64,7 @@ export const New = () => {
     const fileUpload = new FormData()
 
     fileUpload.append('img', img)
+
     fileUpload.append('data',JSON.stringify({
       title:name, 
       price,
@@ -69,9 +73,9 @@ export const New = () => {
       ingredients,
     }))
 
-    api.post('/plates',fileUpload ).then(() => {
-      alert('Cadastro realizado com sucesso')
-       navigate(-1)
+    api.put(`/plates/${params.id}`,fileUpload ).then(() => {
+      alert('Cadastro atualizado com sucesso')
+      handleBack()
     }).catch(error => {
       if(error.response){
         alert(error.response.data.message)
@@ -83,7 +87,7 @@ export const New = () => {
 
   }
 
-  const handleback = () => {
+  const handleBack = () => {
     navigate(-1)
   }
 
@@ -98,10 +102,11 @@ export const New = () => {
             Icon={MdOutlineArrowBackIos}
             iconSize={20}
             title='voltar'
+            onClick={handleBack}
           />
 
       <div>
-        <h2>Criar prato</h2>
+        <h2>Editar prato</h2>
         
         <form>
 
@@ -124,6 +129,7 @@ export const New = () => {
                 type='text'
                 placeholder='Ex.: Salada Ceasar'
                 name='name'
+                value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
@@ -201,7 +207,7 @@ export const New = () => {
             type="button"
             onClick={handleCreate}
           >
-            Criar Prato
+            Atualizar Prato
           </button>
 
         </form>

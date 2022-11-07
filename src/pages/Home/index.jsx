@@ -2,8 +2,11 @@ import { Container, Content } from "./style";
 
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { HeaderAdmin } from "../../components/HeaderAdmin";
 import { Section } from "../../components/Section";
 import { Cards } from '../../components/Cards'
+import { CardsAdmin } from '../../components/CardsAdmin'
+
 
 import imgBanner from '../../assets/images/imageHome.png'
 
@@ -127,12 +130,15 @@ export const Home = () => {
 
       {
       user.admin ? 
-        <HeaderAdmin/> 
+        <HeaderAdmin
+        setPlates={setPlates}
+        /> 
         :  
         <Header
           handleShowFavorites={handleShowFavorites}
           allQuantity={allQuantity}
           favoriteTitle={showFavorites ? 'Todos' : 'Favoritos'}
+          setPlates={setPlates}
       />
       }
 
@@ -147,118 +153,165 @@ export const Home = () => {
             </div>
           </div>
 
+          {mainPlates.length > 0 ?  
+            <Section title='Pratos principais'>
+      
+              { 
+                user.admin ? 
+                mainPlates.map(plate => (
+                  <CardsAdmin
+                    key={plate.id}
+                    id={plate.id}
+                    className='card'
+                    title={plate.title}
+                    img={plate.img}
+                    description={plate.description}
+                    price={plate.price}
+                    setAllOrders={setAllOrders}
+                  />
+                )) 
+                :
+              /* Check if render all plates or favorite plates */
+                !showFavorites ? 
+                mainPlates.map(plate => (
+                  <Cards
+                    key={plate.id}
+                    id={plate.id}
+                    className='card'
+                    title={plate.title}
+                    img={plate.img}
+                    description={plate.description}
+                    price={plate.price}
+                    setAllOrders={setAllOrders}
+                  />
+                )) 
+                :
+                mainPlatesFavorites.map(plate => (
+                  <Cards
+                    key={plate.id}
+                    id={plate.id}
+                    className='card'
+                    title={plate.title}
+                    img={plate.img}
+                    description={plate.description}
+                    price={plate.price}
+                    setAllOrders={setAllOrders}
 
-          <Section title='Pratos principais'>
-    
-            { 
+                  />
+                )) 
+              }
 
-            /* Check if render all plates or favorite plates */
-              !showFavorites ? 
-              mainPlates.map(plate => (
-                <Cards
-                  key={plate.id}
-                  id={plate.id}
-                  className='card'
-                  title={plate.title}
-                  img={plate.img}
-                  description={plate.description}
-                  price={plate.price}
-                  setAllOrders={setAllOrders}
-                />
-              )) 
-              :
-              mainPlatesFavorites.map(plate => (
-                <Cards
-                  key={plate.id}
-                  id={plate.id}
-                  className='card'
-                  title={plate.title}
-                  img={plate.img}
-                  description={plate.description}
-                  price={plate.price}
-                  setAllOrders={setAllOrders}
-
-                />
-              )) 
-            }
-
-          </Section>
+            </Section>
+            :
+            ''
+          }
           
-          
-          <Section title='Sobremesas'>
+          {dessertPlates.length > 0 ?
+            <Section title='Sobremesas'>
 
-            { 
-              !showFavorites ? 
-            
-              dessertPlates.map(plate => (
-                <Cards
-                  key={plate.id}
-                  id={plate.id}
-                  className='card'
-                  title={plate.title}
-                  img={plate.img}
-                  description={plate.description}
-                  price={plate.price}
-                  setAllOrders={setAllOrders}
-
-                />
-              )) 
-              :
-              dessertPlatesFavorites.map(plate => (
-                <Cards
-                  key={plate.id}
-                  id={plate.id}
-                  className='card'
-                  title={plate.title}
-                  img={plate.img}
-                  description={plate.description}
-                  price={plate.price}
-                  setAllOrders={setAllOrders}
-
-                />
-              )) 
+              { 
+                user.admin ? 
+                dessertPlates.map(plate => (
+                  <CardsAdmin
+                    key={plate.id}
+                    id={plate.id}
+                    className='card'
+                    title={plate.title}
+                    img={plate.img}
+                    description={plate.description}
+                    price={plate.price}
+                    setAllOrders={setAllOrders}
+                  />
+                )) 
+                :
+                !showFavorites ? 
               
-            }
+                dessertPlates.map(plate => (
+                  <Cards
+                    key={plate.id}
+                    id={plate.id}
+                    className='card'
+                    title={plate.title}
+                    img={plate.img}
+                    description={plate.description}
+                    price={plate.price}
+                    setAllOrders={setAllOrders}
 
-          </Section>
+                  />
+                )) 
+                :
+                dessertPlatesFavorites.map(plate => (
+                  <Cards
+                    key={plate.id}
+                    id={plate.id}
+                    className='card'
+                    title={plate.title}
+                    img={plate.img}
+                    description={plate.description}
+                    price={plate.price}
+                    setAllOrders={setAllOrders}
+
+                  />
+                )) 
+                
+              }
+
+            </Section>
+            :
+            ''
+          } 
           
-          
+          {drinks.length > 0 ?
+            <Section title='Bebidas'>
 
-          
+              {               
+              user.admin ? 
+                drinks.map(plate => (
+                  <CardsAdmin
+                    key={plate.id}
+                    id={plate.id}
+                    className='card'
+                    title={plate.title}
+                    img={plate.img}
+                    description={plate.description}
+                    price={plate.price}
+                    setAllOrders={setAllOrders}
+                  />
+                )) 
+                :
+                !showFavorites ? 
+              
+                drinks.map(drink => (
+                  <Cards
+                    key={drink.id}
+                    id={drink.id}
+                    className='card'
+                    title={drink.title}
+                    img={drink.img}
+                    description={drink.description}
+                    price={drink.price}
+                    setAllOrders={setAllOrders}              
+                  />
+                )) 
+                :
+                drinksFavorites.map(drink => (
+                  <Cards
+                    key={drink.id}
+                    id={drink.id}
+                    className='card'
+                    title={drink.title}
+                    img={drink.img}
+                    description={drink.description}
+                    price={drink.price}
+                    setAllOrders={setAllOrders}
+                  />
+                ))       
+              }
 
-          <Section title='Bebidas'>
-
-            { 
-              !showFavorites ? 
-            
-              drinks.map(drink => (
-                <Cards
-                  key={drink.id}
-                  id={drink.id}
-                  className='card'
-                  title={drink.title}
-                  img={drink.img}
-                  description={drink.description}
-                  price={drink.price}
-                  setAllOrders={setAllOrders}              
-                />
-              )) 
-              :
-              drinksFavorites.map(drink => (
-                <Cards
-                  key={drink.id}
-                  id={drink.id}
-                  className='card'
-                  title={drink.title}
-                  img={drink.img}
-                  description={drink.description}
-                  price={drink.price}
-                  setAllOrders={setAllOrders}
-                />
-              ))       
-            }
-
-          </Section>
+            </Section>
+            :
+            ''
+          }
 
         
         </Content>

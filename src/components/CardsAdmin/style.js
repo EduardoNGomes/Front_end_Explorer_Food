@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 export const Container = styled.div`
   max-width: 300px;
@@ -7,6 +8,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 1rem;
   gap: 16px;
+
   background: rgba(0, 0, 0, 0.32);
   border: 1px solid rgba(0, 0, 0, 0.65);
   border-radius: 8px;

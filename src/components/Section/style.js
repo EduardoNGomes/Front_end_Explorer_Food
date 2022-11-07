@@ -12,45 +12,12 @@ export const Container = styled.div`
     font-weight: 500;
     font-family: ${({ theme }) => theme.COLORS.FONT_TEXT};
   }
-
-  .slideshow-cards {
-    position: relative;
-
-    .cards {
-      overflow-x: hidden;
-      display: flex;
-      gap: 30px;
-      scroll-behavior: smooth;
-    }
-
-    .scroll-left,
-    .scroll-right {
-      color: rgba(255, 255, 255, 0.2);
-      position: absolute;
-      height: 100%;
-      background: transparent;
-      border: none;
-      padding: 0.5rem;
-      /* display: flex;
-      justify-content: center; */
-    }
-
-    .scroll-left:hover,
-    .scroll-right:hover {
-      background-color: rgba(0, 0, 0, 0.3);
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .scroll-left {
-      left: 0px;
-    }
-
-    .scroll-right {
-      right: 0px;
-    }
-
-    .disable {
-      display: none;
-    }
+  .rec-arrow {
+    color: #fff !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+  .rec-arrow:hover {
+    color: ${({ theme }) => theme.COLORS.COLOR_TEXT_BLUE} !important;
   }
 `

@@ -9,8 +9,9 @@ export const Container = styled.div`
 
   display: grid;
   align-items: center;
-  grid-template-columns: 2fr 1fr 3fr 1fr 0.5fr 0.5fr;
-  grid-template-areas: 'logo  search search request  exit';
+  grid-template-columns: 1.5fr 1fr 3.5fr 1fr 0.5fr 0.5fr;
+  grid-template-areas: 'logo new search request shop-cart exit';
+
   gap: 3.2rem;
 
   .logo {
@@ -27,6 +28,15 @@ export const Container = styled.div`
     svg {
       color: #065e7c;
     }
+  }
+  .new {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 26px;
+    color: ${({ theme }) => theme.COLORS.COLOR_TEXT_GRAY};
   }
 
   .search {

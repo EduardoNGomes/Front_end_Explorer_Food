@@ -3,17 +3,21 @@ import { Container } from "./style";
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
 
-import { AiOutlineSearch , AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineSearch ,AiOutlinePlus } from 'react-icons/ai'
 import { FaMoneyCheck } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { BsHexagonFill } from 'react-icons/bs'
 
 import { useNavigate} from "react-router-dom";
 import { useAuth } from '../../hooks/auth.jsx'
+import { useState,useEffect } from "react";
+import { api } from "../../services/api";
 
-export const HeaderAdmin = ({ handleShowFavorites, allQuantity}) => {
-  const navigate = useNavigate()
+export const HeaderAdmin = ({setPlates}) => {
   const {signOut} = useAuth()
+
+  const navigate = useNavigate()
+  const [ search,setSearch ] = useState('')
 
   
   const handleOrders = () => {
@@ -29,9 +33,28 @@ export const HeaderAdmin = ({ handleShowFavorites, allQuantity}) => {
     signOut()
   }
 
+  const handleNewPlate = () => {
+    navigate('/new')
+  }
 
+  useEffect(()=> {
+    if(search.length > 0 && window.location.pathname == '/') {
+      const fetchPlates = async () => {  
+        const response = await api.get(`/plates?title=${search}`)
+    
+        setPlates(response.data)
+      }
+      fetchPlates()
+    } else if(search.length == 0 ){
+      const fetchPlates = async () => {
+        const response = await api.get(`/plates`)
 
+        setPlates(response.data)
+      }
+      fetchPlates()
 
+    }
+  },[search])
 
   return(
     <Container>      
@@ -46,13 +69,25 @@ export const HeaderAdmin = ({ handleShowFavorites, allQuantity}) => {
         />
       </div>
 
+      <ButtonTransparrent
+        className='new'
+        title='Novo Prato'
+        onClick={handleNewPlate}
+        Icon={AiOutlinePlus}
+        iconSize={20}
+      />
+
 
       <div className="search">
         <AiOutlineSearch 
           size={20} 
           color='#C4C4C4'
           />
-        <input type="text" placeholder="Busque pelas opções de pratos" />
+        <input 
+          type="text" 
+          placeholder="Busque pelas opções de pratos" 
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
 
       <Button

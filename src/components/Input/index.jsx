@@ -1,6 +1,6 @@
 import { Container } from "./style";
 
-export const Input = ({title, type, placeholder, name, ...rest}) => {
+export const Input = ({title, type, placeholder, name, value,...rest}) => {
   return(
     <Container {...rest}>
       <label htmlFor={name}>{title}</label>
