@@ -1,7 +1,7 @@
 import { Container } from "./style";
 
-import { useRef } from "react";
-import Carousel from 'react-elastic-carousel';
+
+import Carousel from '@itseasy21/react-elastic-carousel';
 
 
 import { MdOutlineArrowBackIos , MdOutlineArrowForwardIos } from 'react-icons/md'
