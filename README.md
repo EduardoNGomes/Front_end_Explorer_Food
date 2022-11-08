@@ -1,3 +1,33 @@
-# Front_end_Explorer_Food
+# Front-End Food Explorer
 
-# WIP
+# Deploy Full Project
+- [FoodExplorer](https://foodexplorereduardo.netlify.app/)
+ <h1 align="center">
+  <img alt="Food Explorer" title="#NextLevelWeek" src="https://i.imgur.com/2Qk7mGo.png" />
+</h1>
+
+## Project description
+
+<p align="center">This project was created as the final challenge of the Rockeseat Explorer course .</p>
+
+### Features
+- [x] User registration
+- [x] product registration
+
+### 🛠 Tecnologias
+The following tools were used in building the project
+
+- [React](https://pt-br.reactjs.org/)
+- [Styled-Components](https://styled-components.com/)
+- [React-Icons](https://react-icons.github.io/react-icons/)
+- [react-elastic-carousel](https://www.npmjs.com/package/@itseasy21/react-elastic-carousel)
+- [hamburger-react](https://hamburger-react.netlify.app/)
+
+### Author
+
+- Eduardo Nascimento Gomes
+
+### Contact
+
+- [LinkedIn](https://www.linkedin.com/in/eduardo-gomes-220610227/)
+- [Email] Eduardo_n_gomes.dev@hotmail.com
