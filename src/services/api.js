@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'https://foodexplorer-api-eduardo.herokuapp.com/'
+  baseURL: 'https://foodexplorer-api-eduardo.herokuapp.com'
 })
