@@ -22,6 +22,7 @@ The following tools were used in building the project
 - [React-Icons](https://react-icons.github.io/react-icons/)
 - [react-elastic-carousel](https://www.npmjs.com/package/@itseasy21/react-elastic-carousel)
 - [hamburger-react](https://hamburger-react.netlify.app/)
+- [Axios](https://axios-http.com/ptbr/docs/urlencoded)
 
 ### Author
 
