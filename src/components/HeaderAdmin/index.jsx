@@ -83,7 +83,7 @@ export const HeaderAdmin = ({setPlates=() => {}}) => {
         <ul className={active? 'nav-menu active': 'nav-menu '}>
           <li className="nav-item">
             <ButtonTransparrent
-              className={active? 'new ' : 'isDisable  new'}
+              className='new ' 
               title='Novo Prato'
               onClick={handleNewPlate}
               Icon={AiOutlinePlus}
@@ -91,7 +91,7 @@ export const HeaderAdmin = ({setPlates=() => {}}) => {
             />
           </li>
           <li className="nav-item">
-            <div className={active? 'search ' : 'isDisable  search'}>
+            <div className='search '>
               <AiOutlineSearch 
                 size={20} 
                 color='#C4C4C4'

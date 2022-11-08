@@ -8,11 +8,6 @@ export const Container = styled.div`
     'header'
     'content'
     'footer';
-
-  @media (max-width: 1024px) {
-  }
-  @media (max-width: 400px) {
-  }
 `
 
 export const Content = styled.div`
@@ -112,6 +107,13 @@ export const Content = styled.div`
         p {
           font-size: 1.2rem;
         }
+      }
+    }
+  }
+  @media (max-width: 360px) {
+    .banner {
+      .text-banner {
+        top: -10px;
       }
     }
   }

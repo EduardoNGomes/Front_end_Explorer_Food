@@ -1,17 +1,30 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  width: 100%;
-  height: 80px;
-  background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
-  padding: 1rem 15rem;
+export const Container = styled.header`
   grid-area: header;
+  background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
+  max-height: 70px;
 
-  display: grid;
-  align-items: center;
-  grid-template-columns: 2fr 1fr 3fr 1fr 0.5fr 0.5fr;
-  grid-template-areas: 'logo favorites search request shop-cart exit';
-  gap: 3.2rem;
+  .navbar {
+    padding: 10px 10px;
+    max-width: 1480px;
+    min-height: 70px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .nav-menu {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .menu {
+    display: none;
+  }
 
   .logo {
     margin: 0;
@@ -82,56 +95,42 @@ export const Container = styled.div`
     margin: 0;
   }
 
-  @media (max-width: 1280px) {
-    padding: 1rem 10rem;
-  }
-
-  @media (max-width: 1024px) {
-    display: grid;
-    width: 100%;
-    gap: 5px;
-
-    padding: 10px;
-    height: 200px;
-
-    align-items: center;
-
-    grid-template-columns: 2fr 1fr 1fr 0.5fr 0.5fr;
-    grid-template-areas:
-      'logo favorites request shop-cart exit'
-      'search search search search search';
-
-    .logo {
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-    }
-    .favorites {
-      width: 100%;
-      font-size: 1.4rem;
-      grid-area: favorites;
+  @media (max-width: 768px) {
+    .menu {
+      display: block;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
     }
 
-    .request {
+    .nav-menu {
+      position: fixed;
+      top: -100%;
+      gap: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+      background: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
+
       width: 100%;
-      font-size: 1.4rem;
+      text-align: center;
+      transition: 0.5s;
     }
 
+    .nav-item {
+      margin: 16px 0;
+      width: 80%;
+    }
+
+    .nav-menu.active {
+      top: 70px;
+    }
+
+    .favorites,
+    .shop-cart,
     .exit {
-      width: 100%;
-      width: 20px;
       margin: 0 auto;
     }
-  }
-  @media (max-width: 400px) {
-    padding: 10px;
-    display: grid;
-
-    grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
-    grid-template-rows: 50px 50px 50px;
-    grid-template-areas:
-      'favorites request  shop-cart exit'
-      'logo logo logo logo'
-      'search search search search';
   }
 `
