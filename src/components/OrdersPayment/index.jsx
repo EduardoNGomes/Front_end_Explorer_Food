@@ -27,10 +27,10 @@ export const OrdersPayment = ({status, allOrders}) => {
       return alert('Não há itens no carrinho')
     }else {
       const data = localStorage.getItem("@foodexplorer:plates")
-      const newData = JSON.parse(data).map(da => (
+      const newData = JSON.parse(data).map(data => (
         {
-          name: da.name,
-          quantity: da.quantity
+          name: data.name,
+          quantity: data.quantity
         }
       ))
 
