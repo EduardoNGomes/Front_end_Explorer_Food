@@ -3,7 +3,9 @@ import { Container } from "./style";
 import { ButtonTransparrent } from '../ButtonTransparent'
 import { Button } from '../Button'
 
-import { AiOutlineSearch ,AiOutlinePlus,AiOutlineMenu,AiOutlineClose } from 'react-icons/ai'
+import { Spin as Hamburger } from 'hamburger-react'
+
+import { AiOutlineSearch ,AiOutlinePlus } from 'react-icons/ai'
 import { FaMoneyCheck } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { BsHexagonFill } from 'react-icons/bs'
@@ -20,6 +22,7 @@ export const HeaderAdmin = ({setPlates=() => {}}) => {
   
   const [ search,setSearch ] = useState('')
   const [active, setActive] = useState(false)
+  const [isOpen, setOpen] = useState(false)
 
   
   const handleOrders = () => {
@@ -66,60 +69,77 @@ export const HeaderAdmin = ({setPlates=() => {}}) => {
   return(
     <Container>      
 
-      <div className="logo">
-        <ButtonTransparrent
-          Icon={BsHexagonFill}
-          iconSize={30}
-          title='Food Explorer' 
-          className='logo'
-          onClick={handleHome}
-        />
-      </div>
-
-      <button 
-        className="menu" 
-        type="button"
-        onClick={handleMenu}
-      >
-        {active? <AiOutlineClose size={30}/> : <AiOutlineMenu size={30}/>}
-      </button>
-
-
-      <ButtonTransparrent
-        className='new'
-        title='Novo Prato'
-        onClick={handleNewPlate}
-        Icon={AiOutlinePlus}
-        iconSize={20}
-      />
-
-      <div className="search">
-        <AiOutlineSearch 
-          size={20} 
-          color='#C4C4C4'
+      <nav className="navbar">
+        <div className="logo">
+          <ButtonTransparrent
+            Icon={BsHexagonFill}
+            iconSize={30}
+            title='Food Explorer' 
+            className='logo'
+            onClick={handleHome}
           />
-        <input 
-          type="text" 
-          placeholder="Busque pelas opções de pratos" 
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+        </div>
 
-      <Button
-        title='Pedidos'
-        Icon={FaMoneyCheck}
-        className='request'
-        onClick={handleOrders}
-      />
+        <ul className={active? 'nav-menu active': 'nav-menu '}>
+          <li className="nav-item">
+            <ButtonTransparrent
+              className={active? 'new ' : 'isDisable  new'}
+              title='Novo Prato'
+              onClick={handleNewPlate}
+              Icon={AiOutlinePlus}
+              iconSize={20}
+            />
+          </li>
+          <li className="nav-item">
+            <div className={active? 'search ' : 'isDisable  search'}>
+              <AiOutlineSearch 
+                size={20} 
+                color='#C4C4C4'
+                />
+              <input 
+                type="text" 
+                placeholder="Busque pelas opções de pratos" 
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>  
+          </li>
+
+          <li className="nav-item">
+            <Button
+              title='Pedidos'
+              Icon={FaMoneyCheck}
+              className={active? 'request ' : 'isDisable  request'}
+              onClick={handleOrders}
+            />
+          </li>
+
+          <li className="nav-item">
+            <ButtonTransparrent
+              Icon={ImExit}
+              iconSize={30}
+              className={active? 'exit ' : 'isDisable  exit'}
+              onClick={handleSignOut}
+            />
+          </li>
+        </ul>
+        <button 
+          className="menu" 
+          type="button"
+          onClick={handleMenu}
+        >
+          <Hamburger toggled={isOpen} toggle={setOpen}/>
+        </button>
+      </nav>
+
+
+      
+
+
+
+
 
   
 
-      <ButtonTransparrent
-        Icon={ImExit}
-        iconSize={30}
-        className='exit'
-        onClick={handleSignOut}
-      />
 
 
 

@@ -4,17 +4,14 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 70px auto 70px;
   grid-template-areas:
     'header'
     'content'
     'footer';
 
   @media (max-width: 1024px) {
-    grid-template-rows: 200px auto 70px;
   }
   @media (max-width: 400px) {
-    grid-template-rows: auto auto 70px;
   }
 `
 
