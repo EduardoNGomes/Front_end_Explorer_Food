@@ -29,8 +29,11 @@ export const MenuSignUp = ({title, ...rest}) => {
     if(!email || !name || !password){
       return alert('Preencha todos os campos')
     }
+    if(password.length< 6){
+      return alert('Revise suas informações')
+    }
 
-    api.post('/users', {name, email, password})
+    api.post('/users', {name, email, password : String(password)})
     .then((response()))
     .catch(error => {
       if(error.response){
@@ -69,7 +72,7 @@ export const MenuSignUp = ({title, ...rest}) => {
         text='Senha'
         placeholder='No mínimo 6 caracteres'
         id='password'
-        type='text'
+        type='password'
         onChange={(e)=>setPassword(e.target.value)}
       />
 
