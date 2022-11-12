@@ -18,6 +18,11 @@ import { api } from "../../services/api";
 export const Home = () => {
   const { user } = useAuth()
 
+  const [favoriteP, setFavoriteP] = useState(() => {
+    const localData = localStorage.getItem("@foodexplorer:favorites")
+    return localData ? JSON.parse(localData) : []
+  })
+
   const [ plates, setPlates ] = useState([])
   const [ favoritePlates, setFavoritePlates ] = useState([])
 
@@ -86,6 +91,8 @@ export const Home = () => {
 
       const response = await api.get('/favorites')
       setFavoritePlates(response.data)
+
+
     }
 
     fetchFavorites()
@@ -122,6 +129,12 @@ export const Home = () => {
     }
     selectPlates()
   },[plates])
+
+
+  useEffect(()=>{
+    localStorage.setItem("@foodexplorer:favorites",JSON.stringify(favoriteP))
+
+  },[favoriteP])
 
   return(
 
@@ -183,6 +196,8 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
                   />
                 )) 
                 :

@@ -9,17 +9,39 @@ import { Button } from '../Button'
 import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 import { api } from "../../services/api";
 
-export const Cards = ({title, img, id, description, price , setAllOrders, ...rest}) => {
+export const Cards = ({title, img, id, description, price , setAllOrders, setFavoriteP, favoriteP,  ...rest}) => {
 
   const navigate = useNavigate()
 
-  const [favorite, setFavorite] = useState(false)
+  const [favorite, setFavorite] = useState(() => {
+    const localData = localStorage.getItem("@foodexplorer:favorites")
+    if(localData){
+      const favorites = JSON.parse(localData)
+      const isFavorite = favorites.filter(plate => plate == id)
+      if(isFavorite.length === 1){
+        return true
+      }
+    }
+
+    return false
+
+  })
   const [quantity, setQuantity] = useState(1) 
+
+
   // Add or remove favorite plates
-  const handleFavorites = async() =>{
+  const handleFavorites = () =>{
     //Change Icon 
     setFavorite(!favorite)
-    await api.post('/favorites', {plate_id: id})
+    
+    if(favorite){
+      const favoriteFiltered = favoriteP.filter(plate => plate !== id)
+      setFavoriteP(favoriteFiltered)
+
+    }else{
+      setFavoriteP(prevState => [ ...prevState, id])
+    }
+
   }
 
   // Change to page details using route params
@@ -70,16 +92,7 @@ export const Cards = ({title, img, id, description, price , setAllOrders, ...res
 
   }
 
-  useEffect(()=>{
-    const fetchThisFavorite = async () => {
-      const response = await api.get(`/favorites/${id}`)
-      if(response.data.length > 0 ){
-        setFavorite(true)
-      }
-    }
 
-    fetchThisFavorite()
-  })
   return(
     <Container {...rest}>
 
