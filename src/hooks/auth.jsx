@@ -11,8 +11,11 @@ function AuthProvider({children}){
   const signIn = async ({email, password}) => {
 
     try {
+
+
       const response = await api.post('/sessions', {email, password})
       const {user, token} = response.data
+
 
       localStorage.setItem('@foodExplorer:user', JSON.stringify(user))
       localStorage.setItem('@foodExplorer:token', token)
@@ -29,9 +32,11 @@ function AuthProvider({children}){
     }
   }
 
-  const signOut = () => {
+  const signOut = async () => {
     localStorage.removeItem('@foodExplorer:token')
     localStorage.removeItem('@foodExplorer:user')
+
+
 
     setData({})
 

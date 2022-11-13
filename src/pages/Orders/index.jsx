@@ -30,7 +30,6 @@ export const Orders = () => {
         } )
       })
 
-      console.log(newData)
       setItems(newData)
     }
     fetchOrder()

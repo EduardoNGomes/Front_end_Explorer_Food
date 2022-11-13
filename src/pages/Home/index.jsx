@@ -24,8 +24,6 @@ export const Home = () => {
   })
 
   const [ plates, setPlates ] = useState([])
-  const [ favoritePlates, setFavoritePlates ] = useState([])
-
 
   const [ mainPlates,setMainPlates] = useState([]) 
   const [ mainPlatesFavorites, setMainPlatesFavorites] = useState([])
@@ -49,9 +47,11 @@ export const Home = () => {
 
   const handleShowFavorites = async () => {
 
-    if(!favoritePlates){
+    if(!favoriteP){
       return alert('Não há pratos favoritos')
     } 
+
+    const favoritePlates = plates.filter(plate => favoriteP.includes(plate.id) )
 
     const mainFavorites = favoritePlates.filter(plate => plate.type == 'Prato Principal')
     setMainPlatesFavorites(mainFavorites)
@@ -89,9 +89,8 @@ export const Home = () => {
   useEffect( ()=>{
     const fetchFavorites = async () => {
 
-      const response = await api.get('/favorites')
-      setFavoritePlates(response.data)
-
+      const responseFavorites = await api.get('/favorites')
+      localStorage.setItem('@foodexplorer:favorites', responseFavorites.data.favoriteList)
 
     }
 
