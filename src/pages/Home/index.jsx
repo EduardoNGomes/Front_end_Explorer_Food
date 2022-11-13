@@ -210,6 +210,8 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
 
                   />
                 )) 
@@ -250,6 +252,8 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
 
                   />
                 )) 
@@ -264,6 +268,8 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
 
                   />
                 )) 
@@ -290,6 +296,7 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    
                   />
                 )) 
                 :
@@ -304,7 +311,9 @@ export const Home = () => {
                     img={drink.img}
                     description={drink.description}
                     price={drink.price}
-                    setAllOrders={setAllOrders}              
+                    setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}              
                   />
                 )) 
                 :
@@ -318,6 +327,8 @@ export const Home = () => {
                     description={drink.description}
                     price={drink.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
                   />
                 ))       
               }
