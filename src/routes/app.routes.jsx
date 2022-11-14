@@ -20,7 +20,7 @@ export const AppRoutes = () => {
     if(user.admin){
       return(
         <Routes>
-          <Route path='/' element={<Home/>}/> 
+          <Route path='/' index element={<Home/>}/> 
           <Route path='/new' element={<New/>}/>
           <Route path='/att/:id' element={<AttPlate/>}/>
           <Route path='/order' element={<OrdersAdmin/>}/>
@@ -29,7 +29,7 @@ export const AppRoutes = () => {
     } else {
       return(
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' index element={<Home/>}/>
           <Route path='/details/:id' element={<Details/>}/>
           <Route path='/orders' element={<Orders/>}/>
           <Route path='/payment' element={<Payment/>}/>
