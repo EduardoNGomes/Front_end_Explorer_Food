@@ -7,6 +7,7 @@ import { Orders } from '../pages/Orders'
 import { Payment } from '../pages/Payment'
 import { OrdersAdmin } from '../pages/OrdersAdmin'
 import { AttPlate } from '../pages/AttPlate'
+import { NotFound } from '../pages/NotFound'
 
 import { useAuth } from '../hooks/auth'
 
@@ -20,19 +21,23 @@ export const AppRoutes = () => {
     if(user.admin){
       return(
         <Routes>
-          <Route path='/' element={<Home/>}/> 
+          <Route path='/' index element={<Home/>}/> 
           <Route path='/new' element={<New/>}/>
           <Route path='/att/:id' element={<AttPlate/>}/>
           <Route path='/order' element={<OrdersAdmin/>}/>
+          <Route path='*' element={<NotFound/>}/>
+
         </Routes>
       )
     } else {
       return(
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' index element={<Home/>}/>
           <Route path='/details/:id' element={<Details/>}/>
           <Route path='/orders' element={<Orders/>}/>
           <Route path='/payment' element={<Payment/>}/>
+          <Route path='*' element={<NotFound/>}/>
+
         </Routes>
       )
     }
