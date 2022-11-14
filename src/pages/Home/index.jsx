@@ -90,6 +90,9 @@ export const Home = () => {
     const fetchFavorites = async () => {
 
       const responseFavorites = await api.get('/favorites')
+      if(!responseFavorites.data.favoriteList){
+        localStorage.setItem('@foodexplorer:favorites', JSON.stringify([]))
+      }
       localStorage.setItem('@foodexplorer:favorites', responseFavorites.data.favoriteList)
 
     }
