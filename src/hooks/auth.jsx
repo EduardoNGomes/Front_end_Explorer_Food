@@ -40,6 +40,7 @@ function AuthProvider({children}){
     localStorage.removeItem('@foodExplorer:user')
 
 
+    setLoading(!loading)
 
     setData({})
 
