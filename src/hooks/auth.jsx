@@ -7,9 +7,11 @@ export const AuthContext = createContext({})
 function AuthProvider({children}){
 
   const [data, setData]= useState({})
+  const [loading, setLoading] = useState(false)
+
 
   const signIn = async ({email, password}) => {
-
+    setLoading(!loading)
     try {
 
 
@@ -29,6 +31,7 @@ function AuthProvider({children}){
       }else{
         alert('Não foi possível entrar')
       }
+
     }
   }
 
@@ -61,7 +64,8 @@ function AuthProvider({children}){
     <AuthContext.Provider value={{
       user: data.user,
       signIn,
-      signOut
+      signOut,
+      loading,
     }}>
       {children}
     </AuthContext.Provider>
