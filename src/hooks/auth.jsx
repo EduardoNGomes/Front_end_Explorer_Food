@@ -11,7 +11,7 @@ function AuthProvider({children}){
 
 
   const signIn = async ({email, password}) => {
-    setLoading(!loading)
+    setLoading(true)
     try {
 
 
@@ -25,6 +25,7 @@ function AuthProvider({children}){
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       setData({user, token})
+
     }catch(error){
       if(error.response){
         alert(error.response.data.message)
@@ -33,6 +34,8 @@ function AuthProvider({children}){
       }
 
     }
+    setLoading(false)
+
   }
 
   const signOut = async () => {
@@ -40,7 +43,7 @@ function AuthProvider({children}){
     localStorage.removeItem('@foodExplorer:user')
 
 
-    setLoading(!loading)
+    setLoading(false)
 
     setData({})
 
