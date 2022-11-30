@@ -8,11 +8,13 @@ import { api } from "../../services/api";
 
 import { Button } from "../Button";
 import { ButtonTransparrent } from "../ButtonTransparent";
+import { useAuth } from "../../hooks/auth";
 
 export const MenuSignUp = ({title, ...rest}) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
 
   const navigate = useNavigate()
 
@@ -20,7 +22,7 @@ export const MenuSignUp = ({title, ...rest}) => {
     navigate('/')
   }
 
-  const response = () =>{
+  const serverResponse = () =>{
     alert('Usuario cadastrado com sucesso')
     handleBack()
   }
@@ -34,7 +36,7 @@ export const MenuSignUp = ({title, ...rest}) => {
     }
 
     api.post('/users', {name, email, password : String(password)})
-    .then((response()))
+    .then((serverResponse()))
     .catch(error => {
       if(error.response){
         alert(error.response.data.message)

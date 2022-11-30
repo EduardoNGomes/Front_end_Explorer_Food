@@ -20,4 +20,10 @@ export const Container = styled.button`
   border-radius: 5px;
 
   padding: 12px;
+
+  cursor: ${({ loading }) => (loading ? 'wait' : '')};
+
+  &:disabled {
+    background-color: gray;
+  }
 `
