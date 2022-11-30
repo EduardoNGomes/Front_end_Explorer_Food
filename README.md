@@ -15,8 +15,8 @@
 - [x] product registration
 
 ### User adm
-- [x] adm@email.com.com
-- [x] 123456
+- Login: adm@email.com.com
+- Password: 123456
 
 
 ### 🛠 Tecnologias
