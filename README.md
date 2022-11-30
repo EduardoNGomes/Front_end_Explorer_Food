@@ -14,6 +14,11 @@
 - [x] User registration
 - [x] product registration
 
+### User adm
+- [x] adm@email.com.com
+- [x] 123456
+
+
 ### 🛠 Tecnologias
 The following tools were used in building the project
 
