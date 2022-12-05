@@ -1,7 +1,7 @@
 # Front-End Food Explorer
 
-# Deploy Full Project
-- [FoodExplorer](https://foodexplorereduardo.netlify.app/)
+
+
  <h1 align="center">
   <img alt="Food Explorer" title="#NextLevelWeek" src="https://i.imgur.com/2Qk7mGo.png" />
 </h1>
