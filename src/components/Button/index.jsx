@@ -4,16 +4,16 @@ import { Container } from "./style";
 
 export const Button= ({title,Icon = false, ...rest}) => {
   const {loading} = useAuth()
-
+  console.log(loading)
   return(
     <Container 
       type="button" 
-      disabled={loading}
-      loading={loading}
+      disabled={loading === true ? true : false}
+      loading={loading === true ? true : false}
       {...rest}
     >
       {Icon && <Icon size={20}/>}
-      {loading ? 'AGUARDE' : title}
+      {loading === true ? 'AGUARDE' : title}
     </Container>
   )
 }

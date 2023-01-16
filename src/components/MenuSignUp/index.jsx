@@ -15,6 +15,8 @@ export const MenuSignUp = ({title, ...rest}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const {changeState} = useAuth()
+
 
   const navigate = useNavigate()
 
@@ -22,29 +24,33 @@ export const MenuSignUp = ({title, ...rest}) => {
     navigate('/')
   }
 
-  const serverResponse = () =>{
-    alert('Usuario cadastrado com sucesso')
-    handleBack()
-  }
 
-  function handleSignUp() {
+
+  async function handleSignUp() {
     if(!email || !name || !password){
       return alert('Preencha todos os campos')
     }
     if(password.length< 6){
       return alert('Revise suas informações')
     }
-
-    api.post('/users', {name, email, password : String(password)})
-    .then((serverResponse()))
-    .catch(error => {
+    try {
+      changeState(true)
+      await api.post('/users', {name, email, password : String(password)})
+      alert('Usuário cadastrado com sucesso')
+      changeState(false)
+      handleBack()
+    } catch (error) {
       if(error.response){
+        changeState(true)
         alert(error.response.data.message)
+        changeState(false)
       }else{
+        changeState(true)
         alert('Nao foi possivel realizar o cadastro')
+        changeState(false)
       }
-
-    })
+    }
+    
   }
 
 

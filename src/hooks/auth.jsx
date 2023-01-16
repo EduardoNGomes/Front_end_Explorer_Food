@@ -9,9 +9,13 @@ function AuthProvider({children}){
   const [data, setData]= useState({})
   const [loading, setLoading] = useState(false)
 
+  function changeState(condition){
+    setLoading(condition)
+  }
+
 
   const signIn = async ({email, password}) => {
-    setLoading(true)
+    changeState(true)
     try {
 
 
@@ -34,7 +38,7 @@ function AuthProvider({children}){
       }
 
     }
-    setLoading(false)
+    changeState(false)
 
   }
 
@@ -43,7 +47,7 @@ function AuthProvider({children}){
     localStorage.removeItem('@foodExplorer:user')
 
 
-    setLoading(false)
+    changeState(false)
 
     setData({})
 
@@ -70,6 +74,7 @@ function AuthProvider({children}){
       signIn,
       signOut,
       loading,
+      changeState
     }}>
       {children}
     </AuthContext.Provider>
