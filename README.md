@@ -1,5 +1,9 @@
 # Front-End Food Explorer
 
+## deploy 
+
+- <a>https://foodexplorereduardo.netlify.app/ <a/>
+- Obs: Sometimes deploy is slow, please wait
 
 
  <h1 align="center">
