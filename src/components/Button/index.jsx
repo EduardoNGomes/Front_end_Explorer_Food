@@ -4,7 +4,6 @@ import { Container } from "./style";
 
 export const Button= ({title,Icon = false, ...rest}) => {
   const {loading} = useAuth()
-  console.log(loading)
   return(
     <Container 
       type="button" 
