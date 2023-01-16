@@ -90,7 +90,11 @@ export const Home = () => {
     const fetchFavorites = async () => {
 
       const responseFavorites = await api.get('/favorites')
-      localStorage.setItem('@foodexplorer:favorites', responseFavorites.data.favoriteList)
+      if(!responseFavorites.data.favoriteList){
+        localStorage.setItem('@foodexplorer:favorites', JSON.stringify([]))
+      }else{
+        localStorage.setItem('@foodexplorer:favorites', responseFavorites.data.favoriteList)
+      }
 
     }
 
@@ -210,6 +214,8 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
 
                   />
                 )) 
@@ -250,6 +256,8 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
 
                   />
                 )) 
@@ -264,6 +272,8 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
 
                   />
                 )) 
@@ -290,6 +300,7 @@ export const Home = () => {
                     description={plate.description}
                     price={plate.price}
                     setAllOrders={setAllOrders}
+                    
                   />
                 )) 
                 :
@@ -304,7 +315,9 @@ export const Home = () => {
                     img={drink.img}
                     description={drink.description}
                     price={drink.price}
-                    setAllOrders={setAllOrders}              
+                    setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}              
                   />
                 )) 
                 :
@@ -318,6 +331,8 @@ export const Home = () => {
                     description={drink.description}
                     price={drink.price}
                     setAllOrders={setAllOrders}
+                    setFavoriteP={setFavoriteP}
+                    favoriteP={favoriteP}
                   />
                 ))       
               }

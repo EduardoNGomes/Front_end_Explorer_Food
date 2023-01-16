@@ -40,15 +40,16 @@ export const Header = ({ handleShowFavorites, allQuantity, setPlates , favoriteT
   const handleSignOut = async () => {
     const response = await api.get('/favorites')
     const favoriteList = localStorage.getItem('@foodexplorer:favorites')
-    console.log(response.data)
 
-
-    if(!response.data.favoriteList){
-      await api.post('/favorites', {favoriteList} )
-    } else {
-      console.log(favoriteList + '2')
-      await api.put('/favorites', {favoriteList} )
+    if(favoriteList.length !== 0){
+      if(!response.data.favoriteList){
+        await api.post('/favorites', {favoriteList} )
+      } else {
+        console.log(favoriteList + '2')
+        await api.put('/favorites', {favoriteList} )
+      }
     }
+
 
     localStorage.removeItem('@foodexplorer:favorites')
 
